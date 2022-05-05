@@ -56,7 +56,8 @@ export default function UserModel(mongoose) {
         // 나중에 userid를 찾아낸다.
         console.log(" jwtSecret >> " + jwtSecret)
         var token = jwt.sign(user._id.toHexString(), jwtSecret)
-
+        console.log(token)
+        console.log(token)
         user.token = token
         user.save(function (err, user) {
             if (err) 

@@ -24,7 +24,6 @@ app.post('/join', cors(corsOptions), (req, res) => {
 })
 
 app.post('/login', cors(corsOptions), (req, res) => {
-    console.log(' ### 5.라우터 진입 ### ')
     UserService().login(req, res)
 })
 

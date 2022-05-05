@@ -23,7 +23,8 @@ export default function UserService() {
         },
         login(req, res) {    // 토큰 쪽을 확인하자.
             User.findOne({
-                userid: req.body.userid
+                // userid: req.body.userid
+                email: req.body.email
             }, function (err, user) {
                 if (err) 
                     throw err
@@ -33,6 +34,7 @@ export default function UserService() {
                         .send({success: false, message: '해당 ID가 존재하지 않습니다'});
                 } else {
                     console.log('login: data' + JSON.stringify(user))
+                    console.log(req.body)
                     user.comparePassword(req.body.password, function (_err, isMatch) {
                         if (!isMatch) {
                             res
