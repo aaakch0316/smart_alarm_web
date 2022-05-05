@@ -3,6 +3,7 @@ import morgan from 'morgan'
 import dotenv from 'dotenv'
 
 import index from "./app/routes/index.js"
+import user from "./app/routes/user.js"
 
 import db from './app/models/index.js'
 
@@ -16,6 +17,8 @@ async function startServer(){
     app.use(express.urlencoded({extended: true}));
     app.use(express.json());
     app.use("/", index);
+    app.use("/user", user);
+
     app.use(morgan('dev'))
     db
     .mongoose
