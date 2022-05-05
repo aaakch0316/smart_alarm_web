@@ -21,5 +21,39 @@ export default function UserService() {
             })
             // res.status(200).json({})
         },
+        login(req, res) {    // 토큰 쪽을 확인하자.
+            User.findOne({
+                userid: req.body.userid
+            }, function (err, user) {
+                if (err) 
+                    throw err
+                if (!user) {
+                    res
+                        .status(401)
+                        .send({success: false, message: '해당 ID가 존재하지 않습니다'});
+                } else {
+                    console.log('login: data' + JSON.stringify(user))
+                    user.comparePassword(req.body.password, function (_err, isMatch) {
+                        if (!isMatch) {
+                            res
+                                .status(401)
+                                .send({message:'FAIL'});
+                        } else {
+                            user.generateToken((err, user) => {
+                                if (err) 
+                                    res
+                                        .status(400)
+                                        .send(err)
+
+                                    // 토큰을 저장한다. 어디에? 쿠키, 로컬스토리지
+                                res
+                                    .status(200)
+                                    .json(user)
+                            })
+                        }
+                    })
+                }
+            })
+        }
     }
 }
