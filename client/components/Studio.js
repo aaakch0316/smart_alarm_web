@@ -1,0 +1,92 @@
+import React, {useState, useEffect} from 'react';
+import { useRouter } from 'next/router'
+// import {useDispatch}  from "react-redux";
+
+// ai가 보이는 메인 페이지
+// 알람추가를 할수있다
+// 알람을 테이블에서 확인할수있고, 수정 삭제 가능
+export function Studio() {
+    // const dispatch = useDispatch()
+    const router = useRouter()
+    // mount
+    // useEffect(() => {
+    //     if (!localStorage.getItem("token")) {
+    //         router.push('/login')
+    //     }
+    // })
+    const [hours, setHours] = useState('')
+    const [min, setMin] = useState('')
+    const [seconds, setSeconds] = useState('')
+
+    useEffect(() => { 
+        // 현재시각
+        const setDate = () => {
+            const now = new Date();
+            setHours(String(now.getHours()).padStart(2,'0'));
+            setMin(String(now.getMinutes()).padStart(2,'0'));
+            setSeconds(String(now.getSeconds()).padStart(2,'0'));
+        };
+        
+        setInterval(setDate, 1000);
+    })
+    return (
+        <div class="layout">
+            {/* <button class="btn btn__primary" onClick={()=>{
+                dispatch(getToken())
+            }}>1: 토큰받기</button> */}
+            {/* 알람 추가하는 모달에 넣기 */}
+            {/* <button class="btn btn__primary">2: 영상보기</button> */}
+            <div class="video">
+                <div class="time">
+                    <span class="hand">현재시각  </span>
+                    <span class="hand hour-hand">{hours}:</span>
+                    <span class="hand min-hand">{min}:</span>
+                    <span class="hand sec-hand">{seconds}</span>
+                </div>
+                <div class="video-table">
+                    <video width="80%" height="500px"  controls>
+                        <source src="https://ai-platform-public.s3.ap-northeast-2.amazonaws.com/ysy_2_a8d4cf2dbe8a094cc62a0a1e6a80cfc8.mp4"></source>
+                    </video>
+                    <table class="table">
+                        <thead class="table__head">
+                            <tr>
+                                <th>시간</th>
+                                <th>내용</th>
+                                <th>설정</th>
+                            </tr>
+                        </thead>
+
+                        <tbody class="table__body">
+                            <tr>
+                                <td>오후 12:00</td>
+                                <td>점심먹을 시간</td>
+                                <td>
+                                    <button class="btn btn__compact">수정</button>
+                                    <button class="btn btn__compact">삭제</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>오후 3:00</td>
+                                <td>약먹을 시간</td>
+                                <td>
+                                    <button class="btn btn__compact">수정</button>
+                                    <button class="btn btn__compact">삭제</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>오후 6:00</td>
+                                <td>저녁먹을 시간</td>
+                                <td>
+                                    <button class="btn btn__compact">수정</button>
+                                    <button class="btn btn__compact">삭제</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+        </div>
+    )
+}

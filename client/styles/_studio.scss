@@ -1,0 +1,97 @@
+.time {
+    .hand {
+        font-size: 2rem;
+        font-weight: 700;
+    }
+}
+
+.video-table {
+    display: flex;
+    flex-direction: row;
+    height: 500px;
+    .video {
+        width: 60%;
+        height: 100%;
+    }
+    .table {
+        width: 40%;
+        height: 100%;
+        overflow-y: scroll;
+        border-spacing: 0;
+        border-collapse: collapse;
+        table-layout: auto;
+
+        &__head {
+            & > tr {
+                height: 3rem;
+                text-align: left;
+
+                & > th {
+                    padding: 0 1.6rem;
+                }
+
+                & > th:last-of-type {
+                    text-align: center;
+                }
+            }
+        }
+
+        &__body {
+            & > tr {
+                height: 3rem;
+                border-top: 1px solid $accent-2;
+
+                & > td {
+                    padding: 1rem 1rem;
+                }
+
+                & > td:last-of-type {
+                    height: 100%;
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 0.8rem;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+
+            & > tr:hover,
+            & > tr:focus {
+                background-color: $accent-1;
+
+                .btn__edit {
+                    color: $color-warning;
+
+                    &:hover {
+                        color: $color-bg;
+                        background-color: $color-warning;
+                    }
+                }
+                .btn__delete {
+                    color: $color-error;
+
+                    &:hover {
+                        color: $color-bg;
+                        background-color: $color-error;
+                    }
+                }
+            }
+        }
+
+        @include media(768px) {
+            &__head > tr,
+            &__body > tr {
+                & > th:nth-child(4),
+                & > th:nth-child(3),
+                & > th:nth-child(2) {
+                    display: none;
+                }
+                & > td:nth-child(4),
+                & > td:nth-child(3),
+                & > td:nth-child(2) {
+                    display: none;
+                }
+            }
+        }
+    }
+}
