@@ -30,25 +30,25 @@ export function Studio() {
         setInterval(setDate, 1000);
     })
     return (
-        <div class="layout">
-            {/* <button class="btn btn__primary" onClick={()=>{
+        <div className="layout">
+            {/* <button className="btn btn__primary" onClick={()=>{
                 dispatch(getToken())
             }}>1: 토큰받기</button> */}
             {/* 알람 추가하는 모달에 넣기 */}
-            {/* <button class="btn btn__primary">2: 영상보기</button> */}
-            <div class="video">
-                <div class="time">
-                    <span class="hand">현재시각  </span>
-                    <span class="hand hour-hand">{hours}:</span>
-                    <span class="hand min-hand">{min}:</span>
-                    <span class="hand sec-hand">{seconds}</span>
+            {/* <button className="btn btn__primary">2: 영상보기</button> */}
+            <div className="video">
+                <div className="time">
+                    <span className="hand">현재시각  </span>
+                    <span className="hand hour-hand">{hours}:</span>
+                    <span className="hand min-hand">{min}:</span>
+                    <span className="hand sec-hand">{seconds}</span>
                 </div>
-                <div class="video-table">
+                <div className="video-table">
                     <video width="80%" height="500px"  controls>
                         <source src="https://ai-platform-public.s3.ap-northeast-2.amazonaws.com/ysy_2_a8d4cf2dbe8a094cc62a0a1e6a80cfc8.mp4"></source>
                     </video>
-                    <table class="table">
-                        <thead class="table__head">
+                    <table className="table">
+                        <thead className="table__head">
                             <tr>
                                 <th>시간</th>
                                 <th>내용</th>
@@ -56,29 +56,29 @@ export function Studio() {
                             </tr>
                         </thead>
 
-                        <tbody class="table__body">
+                        <tbody className="table__body">
                             <tr>
                                 <td>오후 12:00</td>
                                 <td>점심먹을 시간</td>
                                 <td>
-                                    <button class="btn btn__compact">수정</button>
-                                    <button class="btn btn__compact">삭제</button>
+                                    <button className="btn btn__compact">수정</button>
+                                    <button className="btn btn__compact">삭제</button>
                                 </td>
                             </tr>
                             <tr>
                                 <td>오후 3:00</td>
                                 <td>약먹을 시간</td>
                                 <td>
-                                    <button class="btn btn__compact">수정</button>
-                                    <button class="btn btn__compact">삭제</button>
+                                    <button className="btn btn__compact">수정</button>
+                                    <button className="btn btn__compact">삭제</button>
                                 </td>
                             </tr>
                             <tr>
                                 <td>오후 6:00</td>
                                 <td>저녁먹을 시간</td>
                                 <td>
-                                    <button class="btn btn__compact">수정</button>
-                                    <button class="btn btn__compact">삭제</button>
+                                    <button className="btn btn__compact">수정</button>
+                                    <button className="btn btn__compact">삭제</button>
                                 </td>
                             </tr>
                         </tbody>

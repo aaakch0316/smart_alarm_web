@@ -21,52 +21,52 @@ export function Signup() {
     return (
 
         <form 
-            class="form"
+            className="form"
             onSubmit={handleSubmit(onSubmitHandler)}
             noValidate
         >
-            <div class="form__element">
+            <div className="form__element">
                 <h1>회원가입</h1>
                 <label
                     htmlFor="idInput"
-                    class={cx("label", errors.name && "label--error")}
+                    className={cx("label", errors.name && "label--error")}
                 >
                     {errors.name ? (
                         "ID is required!"
                     ) : (
                         <>
-                            ID&nbsp;<span class="label__required">*</span>
+                            ID&nbsp;<span className="label__required">*</span>
                         </>
                     )}
                 </label>
-                <input id="idInput" class="input" className={cx("input", errors.id && "input--error")} type="text" name="id"/>
+                <input id="idInput" className="input" className={cx("input", errors.id && "input--error")} type="text" name="id"/>
                 <label
                     htmlFor="emailInput"
-                    class={cx("label", errors.email && "label--error")}
+                    className={cx("label", errors.email && "label--error")}
                 >
                     {errors.email ? (
                         "Email is required!"
                     ) : (
                         <>
-                            Email&nbsp;<span class="label__required">*</span>
+                            Email&nbsp;<span className="label__required">*</span>
                         </>
                     )}
                 </label>
-                <input id="emailInput" className={cx("input", errors.email && "input--error")} class="input" type="text" name="email"/>
+                <input id="emailInput" className={cx("input", errors.email && "input--error")} className="input" type="text" name="email"/>
                 <label
                     htmlFor="passwordInput"
-                    class={cx("label", errors.name && "label--error")}
+                    className={cx("label", errors.name && "label--error")}
                 >
                     {errors.name ? (
                         "Password is required!"
                     ) : (
                         <>
-                            Password&nbsp;<span class="label__required">*</span>
+                            Password&nbsp;<span className="label__required">*</span>
                         </>
                     )}
                 </label>
-                <input id="passwordInput" className={cx("input", errors.password && "input--error")} class="input" type="text" name="password"/>
-                <button type="submit" class="btn btn__primary">회원가입</button>
+                <input id="passwordInput" className={cx("input", errors.password && "input--error")} className="input" type="text" name="password"/>
+                <button type="submit" className="btn btn__primary">회원가입</button>
             </div>
         </form>
     )

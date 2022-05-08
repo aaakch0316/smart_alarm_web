@@ -7,12 +7,12 @@ export function Header() {
 	// const dispatch = useDispatch();
 
 	return (
-		<header class="header">
-			<h1 class="header__h1">
+		<header className="header">
+			<h1 className="header__h1">
 				안녕하세요  <span>김명자님</span>
 			</h1>
 			<button
-				class="btn btn__primary btn__icon"
+				className="btn btn__primary btn__icon"
 				// onClick={() => {
 				// 	dispatch(setModalOpen(true));
 				// }}
