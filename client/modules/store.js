@@ -1,20 +1,21 @@
-import { createStore, applyMiddleware } from "redux";
-import { createWrapper } from "next-redux-wrapper";
-import { composeWithDevTools } from "redux-devtools-extension";
-import createMiddleware from "redux-saga";
+import { configureStore } from '@reduxjs/toolkit'
+import { createWrapper } from 'next-redux-wrapper'
+import createSagaMiddleware from '@redux-saga/core'
+import rootSaga from './sagas/index.js'
+import rootReducer from './reducers/index.js'
 
-import rootReducer from "./reducers";
-import rootSaga from "./sagas";
+const isDev = process.env.NODE_ENV === 'development'
 
-const sagaMiddleware = createMiddleware();
+const sagaMiddleware = createSagaMiddleware()
 
-const store = createStore(
-	rootReducer,
-	composeWithDevTools(applyMiddleware(sagaMiddleware))
-);
+const createStore = () => {
+    const store = configureStore({
+        reducer: rootReducer,
+        devTools: true,
+        middleware: [sagaMiddleware]
+    })
+    sagaMiddleware.run(rootSaga)
+    return store
+}
 
-sagaMiddleware.run(rootSaga);
-
-const makeStore = () => store;
-
-export const wrapper = createWrapper(makeStore);
+export const wrapper = createWrapper(createStore, {debug: isDev})

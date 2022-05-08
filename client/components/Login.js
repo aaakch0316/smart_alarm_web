@@ -4,9 +4,9 @@ import { useEffect } from "react";
 import { useRouter } from 'next/router'
 import { useDispatch }  from "react-redux";
 
-import {
-	signin
-} from "../modules";
+// import {
+// 	signin
+// } from "../modules";
 
 export function Login() {
     const dispatch = useDispatch();
@@ -15,7 +15,7 @@ export function Login() {
 
     // 일단은 input상관없이 token얻어오는걸로 test
     const onSubmitHandler = async() => {
-        const res = await dispatch(signin())
+        // const res = await dispatch(signin())
         localStorage.setItem('access_token', res)
         console.log("res확인", localStorage.getItem("access_token"))
         router.push('/')

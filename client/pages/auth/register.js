@@ -4,6 +4,8 @@ import Alert from '@mui/material/Alert';
 import Collapse from '@mui/material/Collapse';
 import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
+import { useDispatch } from 'react-redux';  
+import { userActions } from '../../modules/reducers/user.js';
 
 
 
@@ -13,6 +15,7 @@ export default function RegisterPage() {
     const [user, setUser] =useState({
         email:'', password:''
     })
+    const dispatch = useDispatch()
     const onChange = e => {
         e.preventDefault()
         const {name, value} = e.target;
@@ -26,10 +29,14 @@ export default function RegisterPage() {
         console.log(user )
         if (user.password === user.password2){
             console.log('같다')
+            console.log(user)
+            dispatch(userActions.joinRequest({
+                email: user.email,
+                password: user.password
+            }))
         } else {
             setOpen(true)
         }
-        // dispatch(registerRequest(user))
     }
     return (
         <>
