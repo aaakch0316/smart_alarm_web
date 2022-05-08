@@ -23,9 +23,11 @@ export function* watchJoin(){
 
 function* login(login){
     try{
+        console.log(들어옴)
+        console.log(login)
         const response = yield loginApi(login.payload)
         yield put(userActions.loginSuccess(response))
-        window.location.href = '/'
+        Router.push('/');
     }catch(error){
         yield put(userActions.loginFailure(error))
     }

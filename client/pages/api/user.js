@@ -22,6 +22,7 @@ export const loginApi = async (payload) => {
             payload,
             {headers}
         )
+        console.log(response.data)
         const loginUser = JSON.stringify(response.data)
         localStorage.setItem("loginUser", loginUser)
         return response.data

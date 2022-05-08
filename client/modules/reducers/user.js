@@ -22,7 +22,7 @@ const userSlice = createSlice({
             state.loading = false;
         },
 
-        loginRequest: (state, {payload}) => {
+        loginRequest: (state, payload) => {
             state.loading = true;
         },
         loginSuccess: (state, {payload}) => {

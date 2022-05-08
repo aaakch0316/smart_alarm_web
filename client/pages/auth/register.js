@@ -28,8 +28,6 @@ export default function RegisterPage() {
         e.preventDefault()
         console.log(user )
         if (user.password === user.password2){
-            console.log('같다')
-            console.log(user)
             dispatch(userActions.joinRequest({
                 email: user.email,
                 password: user.password
