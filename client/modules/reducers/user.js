@@ -22,20 +22,21 @@ const userSlice = createSlice({
             state.loading = false;
         },
 
-        loginRequest: (state, payload) => {
+        loginRequest(state, payload){
+            // alert('loginRequest')
             state.loading = true;
         },
         loginSuccess: (state, {payload}) => {
-            state.loading = true;
+            state.loading = false;
             state.data = [...state.data, payload]
         },
         loginFailure: (state, {payload}) => {
-            state.loading = true;
+            state.loading = false;
             state.data = payload;
         },
 
         logoutRequest: (state, {payload}) => {
-            state.loading = false;
+            state.loading = true;
         },
         logoutSuccess(state){
             state.loading = false;

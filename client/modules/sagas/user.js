@@ -23,42 +23,45 @@ export function* watchJoin(){
 
 function* login(login){
     try{
-        console.log(들어옴)
-        console.log(login)
+        // console.log('들어옴')
+        // console.log(login.payload)
         const response = yield loginApi(login.payload)
-        yield put(userActions.loginSuccess(response))
-        Router.push('/');
+        // console.log('response')
+        // console.log(response)
+        // yield put(userActions.loginSuccess(response))
+        // Router.push('/');
     }catch(error){
         yield put(userActions.loginFailure(error))
     }
 }
 
-export function* watchLogin(){
+export function* watchLogin(dd){
+    // console.log('dd0', dd)
     yield takeLatest(userActions.loginRequest, login)
 }
 
-function* logout(){
-    try{
-        const response = yield logoutApi()
-        yield put(userActions.logoutSuccess(response))
-    }catch(error){
-        console.log(error)
-    }
-}
+// function* logout(){
+//     try{
+//         const response = yield logoutApi()
+//         yield put(userActions.logoutSuccess(response))
+//     }catch(error){
+//         console.log(error)
+//     }
+// }
 
-export function* watchLogout(){
-    yield takeLatest(userActions.logoutRequest, logout)
-}
+// export function* watchLogout(){
+//     yield takeLatest(userActions.logoutRequest, logout)
+// }
 
-function* delUser(){
-    try{
-        const response = yield delUserApi()
-        yield put(userActions.delUserSuccess(response))
-    }catch(error){
-        console.log(error)
-    }
-}
-export function* watchDelUser(){
-    yield takeLatest(userActions.delUserRequest, delUser)
-}
+// function* delUser(){
+//     try{
+//         const response = yield delUserApi()
+//         yield put(userActions.delUserSuccess(response))
+//     }catch(error){
+//         console.log(error)
+//     }
+// }
+// export function* watchDelUser(){
+//     yield takeLatest(userActions.delUserRequest, delUser)
+// }
 

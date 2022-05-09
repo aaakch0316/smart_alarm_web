@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useDispatch } from 'react-redux';  
 import { userActions } from '../../modules/reducers/user.js';
 
-// import "@/styles/main.scss";
 
 
 export default function LoginPage() {
@@ -25,6 +24,7 @@ export default function LoginPage() {
         e.preventDefault()
         // console.log('??')
         // console.log(user.email, user.password)
+        dispatch(userActions.loginRequest(user))
         if (user.email && user.password) {
             console.log(user.email, user.password)
             dispatch(userActions.loginRequest({
