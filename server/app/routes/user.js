@@ -12,6 +12,7 @@ const corsOptions = {
 
 const app = express()
 app.use(cors());
+// app.use(cors(corsOptions
 app.use(function (_req, res, next) {
     res.header(
         "Access-Control-Allow-Headers",
@@ -25,6 +26,17 @@ app.post('/join', cors(corsOptions), (req, res) => {
 
 app.post('/login', cors(corsOptions), (req, res) => {
     UserService().login(req, res)
+})
+
+
+app.post('/', cors(corsOptions), (req, res) => {
+    console.log('token test')
+    UserService().getUserByToken(req, res)
+})
+
+app.post('/a', UserService().getUserByToken, (req, res) => {
+    console.log('token success')
+    res.json({success: true})
 })
 
 // 로그아웃 로직을 보면 passport를 통과해야한다

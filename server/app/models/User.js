@@ -50,19 +50,37 @@ export default function UserModel(mongoose) {
             }
         })
     }
-    userSchema.methods.generateToken = function (cb) {
+    userSchema.methods.generateToken = async function (cb) {
         var user = this;
-        // json web token 이용하여 token 생성하기 user id 와 두번째 param 으로 토큰을 만들고, param 을 이용하여
-        // 나중에 userid를 찾아낸다.
         console.log(" jwtSecret >> " + jwtSecret)
-        var token = jwt.sign(user._id.toHexString(), jwtSecret)
-        console.log(token)
+        // var token = await jwt.sign(user._id.toHexString(), jwtSecret, {expiresIn : '1d'})
+        const payload = {user : user.email}
+        // jwtSecret => uuid 사용 - 서명을 만들 때 사용되는 암호 문자열
+        // var token = await jwt.sign(payload, "005c9780fe7c11eb89b4e39719de58a5", {expiresIn : "1d"})
+        var token = await jwt.sign(payload, jwtSecret, {expiresIn : "1d"})
         console.log(token)
         user.token = token
         user.save(function (err, user) {
+            console.log(user.token)
             if (err) 
                 return cb(err);
-            cb(null, user)
+            cb(null, {success: true, accessToken: user.token})
+        })
+    }
+    userSchema.statics.findByToken = function (token, cb) {
+        var user = this;
+        jwt.verify(token, jwtSecret, function (err, decode) {
+            if (typeof decode === 'undefined') return cb('not token')
+            user.findOne({
+                "email": decode.user,
+                // "token": token
+            }, function (err, user) {
+                if (err) 
+                    {
+                        return cb(err);
+                    }
+                cb(null, user);
+            })
         })
     }
     return mongoose.model('User', userSchema)

@@ -1,10 +1,8 @@
 import db from '../models/index.js'
-// import getDatabase from '../lambdas/getDatabase.js'
 
 
 export default function UserService() {
     const User = db.User    
-    // const dbo = getDatabase()    
 
     return {
         join(req, res){
@@ -23,7 +21,6 @@ export default function UserService() {
         },
         login(req, res) {    // 토큰 쪽을 확인하자.
             User.findOne({
-                // userid: req.body.userid
                 email: req.body.email
             }, function (err, user) {
                 if (err) 
@@ -47,7 +44,6 @@ export default function UserService() {
                                         .status(400)
                                         .send(err)
 
-                                    // 토큰을 저장한다. 어디에? 쿠키, 로컬스토리지
                                 res
                                     .status(200)
                                     .json(user)
@@ -56,6 +52,24 @@ export default function UserService() {
                     })
                 }
             })
-        }
+        },
+        getUserByToken(req, res, next){ 
+            let token = req.body.token;
+            console.log(token)
+            User.findByToken(token,(err,user)=>{
+                if(err) return res.json({
+                    isAuth : false,
+                    error : true
+                });
+                if(!user) return res.json({
+                    isAuth : false,
+                    error : true
+                });
+                // req.token = token;
+                // req.user = user;
+                next();
+                // res.json(user)
+            })
+        },
     }
 }
