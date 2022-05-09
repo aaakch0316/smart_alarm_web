@@ -28,8 +28,8 @@ function* login(login){
         const response = yield loginApi(login.payload)
         // console.log('response')
         // console.log(response)
-        // yield put(userActions.loginSuccess(response))
-        // Router.push('/');
+        yield put(userActions.loginSuccess(response))
+        Router.push('/');
     }catch(error){
         yield put(userActions.loginFailure(error))
     }

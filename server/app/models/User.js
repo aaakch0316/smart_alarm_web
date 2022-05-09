@@ -64,7 +64,7 @@ export default function UserModel(mongoose) {
             console.log(user.token)
             if (err) 
                 return cb(err);
-            cb(null, {success: true, accessToken: user.token})
+            cb(null, {success: true, accessToken: user.token, userName: user.name})
         })
     }
     userSchema.statics.findByToken = function (token, cb) {
