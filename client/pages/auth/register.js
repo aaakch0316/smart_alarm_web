@@ -13,7 +13,7 @@ import { userActions } from '../../modules/reducers/user.js';
 export default function RegisterPage() {
     const [open, setOpen] = useState(false)
     const [user, setUser] =useState({
-        email:'', password:''
+        email:'', password:'', name: ''
     })
     const dispatch = useDispatch()
     const onChange = e => {
@@ -26,11 +26,12 @@ export default function RegisterPage() {
     }
     const onSubmit = e => {
         e.preventDefault()
-        console.log(user )
+        console.log(user)
         if (user.password === user.password2){
             dispatch(userActions.joinRequest({
                 email: user.email,
-                password: user.password
+                password: user.password,
+                name: user.name
             }))
         } else {
             setOpen(true)

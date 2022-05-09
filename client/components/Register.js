@@ -94,6 +94,17 @@ export function Register({onChange, onSubmit}){
                   onChange={onChange}
                 />
               </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="name"
+                  label="User Name"
+                  // type="password"
+                  id="name"
+                  onChange={onChange}
+                />
+              </Grid>
               {/* <Grid item xs={12}>
                 <FormControlLabel
                   control={<Checkbox value="allowExtraEmails" color="primary" />}
@@ -107,7 +118,7 @@ export function Register({onChange, onSubmit}){
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              전 송
+              SIGNUP
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
