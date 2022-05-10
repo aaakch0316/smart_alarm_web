@@ -1,8 +1,7 @@
 import cx from "clsx";
-import { useForm } from "react-hook-form";
-import { useEffect } from "react";
-import { useRouter } from 'next/router'
-import { useDispatch }  from "react-redux";
+import Button from '@mui/material/Button';
+import Router from 'next/router';
+
 
 // import {
 // 	signin
@@ -36,8 +35,19 @@ export function Login({onChange, onSubmit}) {
                         </>
                 </label> 
                 <input onChange={onChange} className={cx("input","")} name="password" />
-                <button type="submit"  className="btn btn__primary">로그인</button>
+                <button type="submit"  className="btn btn__primary">LOGIN</button>
+                
             </div>
+            <Button
+				// variant="contained"
+				size="large"
+				className="btn"
+				// styles={{fontSize: 10}}
+				onClick={() => {
+                    Router.push("/auth/register")
+				}}
+			> SIGNUP
+			</Button>
         </form>
     )
 }
