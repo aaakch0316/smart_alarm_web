@@ -14,7 +14,7 @@ export function Header({data}) {
 			<h1 className="header__h1">
 				안녕하세요  <span>{data.userName}님</span>
 			</h1>
-			<Button
+			{/* <Button
 				variant="contained"
 				size="large"
 				className="btn__icon"
@@ -24,7 +24,7 @@ export function Header({data}) {
 				// }}
 			>
 				<PersonAddSVG /> <b>알람 추가</b>
-			</Button>
+			</Button> */}
 			<BasicModal />
             {/* <button onClick={alertHello}>hello</button> */}
 		</header>

@@ -3,6 +3,8 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import { PersonAddSVG } from "@/icons";
+
 
 const style = {
   position: 'absolute',
@@ -23,7 +25,12 @@ export default function BasicModal() {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Open modal</Button>
+      <Button 
+        onClick={handleOpen} 
+        variant="contained"
+				size="large"
+				className="btn__icon"
+        ><PersonAddSVG /> Add Alarm</Button>
       <Modal
         open={open}
         onClose={handleClose}

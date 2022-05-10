@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 // ai가 보이는 메인 페이지
 // 알람추가를 할수있다
 // 알람을 테이블에서 확인할수있고, 수정 삭제 가능
-export function Studio() {
+export function Studio({data}) {
     // const dispatch = useDispatch()
     const router = useRouter()
     // mount

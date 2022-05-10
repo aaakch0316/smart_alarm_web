@@ -1,7 +1,9 @@
-import { put, takeLatest } from "redux-saga/effects"
-import { joinApi, loginApi, logoutApi } from "../../pages/api/user"
-import { userActions } from "../reducers/user"
+import { put, call, takeLatest } from "redux-saga/effects"
 import Router from 'next/router';
+import { userActions } from "../reducers/user"
+import {getToken, setToken, removeToken} from "../../services/tokenService";
+import { joinApi, loginApi, logoutApi } from "../../pages/api/user"
+
 
 
 
@@ -23,11 +25,11 @@ export function* watchJoin(){
 
 function* login(login){
     try{
-        // console.log('들어옴')
-        // console.log(login.payload)
+        
         const response = yield loginApi(login.payload)
-        // console.log('response')
-        // console.log(response)
+        console.log('response')
+        console.log(response.accessToken)
+        yield call(setToken, response.accessToken)
         yield put(userActions.loginSuccess(response))
         Router.push('/');
     }catch(error){
