@@ -5,21 +5,28 @@ import applyDotenv from '../lambdas/applyDotenv.js'
 
 export default function UserModel(mongoose) {
     const {jwtSecret} = applyDotenv(dotenv)
-
+    const alarmSchema = mongoose.Schema({
+        // isCheck: {type: Boolean, required: true},
+        content: {type: String, required: true},
+        // alertTime: {type: Date, required: true},
+        alertTime: {type: String, required: true},
+        mp4Url: String
+    })
     const userSchema = mongoose.Schema({
         email: {
             type: String,
             required: true,
             unique: 1
-          },
+        },
         password: {
             type: String,
             required: true,
-          },
+        },
         name: String,
         age: String,
         feature: String,
         phone: String,
+        alarm: [alarmSchema]
     }, {timestamps: true});
     userSchema.pre("save", function (next){
         let user = this;
