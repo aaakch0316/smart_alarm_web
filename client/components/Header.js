@@ -12,7 +12,7 @@ export function Header({data}) {
 	return (
 		<header className="header">
 			<h1 className="header__h1">
-				안녕하세요  <span>{data.userName}님</span>
+				안녕하세요  <span>{data?.userName}님</span>
 			</h1>
 			{/* <Button
 				variant="contained"
