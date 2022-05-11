@@ -9,7 +9,10 @@ export default function UserModel(mongoose) {
         // isCheck: {type: Boolean, required: true},
         content: {type: String, required: true},
         // alertTime: {type: Date, required: true},
-        alertTime: {type: String, required: true},
+        alerthour: {type: String, required: true},
+        alertmin : {type: String, required: true},
+        period: String,
+        // alertTime: {type: String, required: true},
         mp4Url: String
     })
     const userSchema = mongoose.Schema({
@@ -71,7 +74,7 @@ export default function UserModel(mongoose) {
             console.log(user.token)
             if (err) 
                 return cb(err);
-            cb(null, {success: true, accessToken: user.token, userName: user.name})
+            cb(null, {success: true, accessToken: user.token, userDetail: user})
         })
     }
     userSchema.statics.findByToken = function (token, cb) {

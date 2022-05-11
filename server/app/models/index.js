@@ -2,7 +2,7 @@ import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 
 import UserModel from './User.js'
-import AlarmModel from './Alarm.js'
+// import AlarmModel from './Alarm.js'
 
 
 mongoose.Promise = global.Promise
