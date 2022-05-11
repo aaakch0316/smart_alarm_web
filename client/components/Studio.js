@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { useRouter } from 'next/router'
+import Button from '@mui/material/Button';
+
 // import {useDispatch}  from "react-redux";
 
 // ai가 보이는 메인 페이지
@@ -57,14 +59,26 @@ export function Studio({data}) {
                         </thead>
 
                         <tbody className="table__body">
-                            {data?.userDetail.alarm.map(({_id, content, alerthour, alertmin, period})=>(
+                            {data?.userDetail.alarm.map(({_id, content, alerthour, alertmin, period, mp4Url})=>(
                                 <tr key={_id}>
                                     <td>{alerthour} : {alertmin}</td>
                                     <td>{content}</td>
+                                    {mp4Url? 
                                     <td>
-                                        <button className="btn btn__compact">수정</button>
-                                        <button className="btn btn__compact">삭제</button>
+                                        <Button variant="contained">수정</Button>
+                                        <Button variant="contained">삭제</Button>
                                     </td>
+                                    : 
+                                    <td>
+                                        <Button
+                                            fullWidth
+                                            variant="contained"
+                                            sx={{ mt: 1, mb: 2 }}
+                                        >
+                                            모델생성
+                                        </Button>
+                                    </td>
+                                    }
                                 </tr>
                             ))}
                         </tbody>
