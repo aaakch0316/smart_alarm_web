@@ -57,30 +57,16 @@ export function Studio({data}) {
                         </thead>
 
                         <tbody className="table__body">
-                            <tr>
-                                <td>오후 12:00</td>
-                                <td>점심먹을 시간</td>
-                                <td>
-                                    <button className="btn btn__compact">수정</button>
-                                    <button className="btn btn__compact">삭제</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>오후 3:00</td>
-                                <td>약먹을 시간</td>
-                                <td>
-                                    <button className="btn btn__compact">수정</button>
-                                    <button className="btn btn__compact">삭제</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>오후 6:00</td>
-                                <td>저녁먹을 시간</td>
-                                <td>
-                                    <button className="btn btn__compact">수정</button>
-                                    <button className="btn btn__compact">삭제</button>
-                                </td>
-                            </tr>
+                            {data?.userDetail.alarm.map(({_id, content, alerthour, alertmin, period})=>(
+                                <tr key={_id}>
+                                    <td>{alerthour} : {alertmin}</td>
+                                    <td>{content}</td>
+                                    <td>
+                                        <button className="btn btn__compact">수정</button>
+                                        <button className="btn btn__compact">삭제</button>
+                                    </td>
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 </div>

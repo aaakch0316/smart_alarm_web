@@ -1,4 +1,4 @@
-import axios, {AxiosResponse} from 'axios';
+import axios from 'axios';
 
 const SERVER = 'http://127.0.0.1:5000'
 const headers = {
