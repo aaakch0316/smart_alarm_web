@@ -6,6 +6,15 @@ const headers = {
     Authorization: "JWT fetching..."
 }
 
+export const alarmApi = async (payload) => {
+    try{
+        const response = await axios.post(`${SERVER}/user/alarm`, payload, {headers})
+        return response.data
+    }catch(error){
+        return error
+    }
+}
+
 export const joinApi = async (payload) => {
     try{
         const response = await axios.post(`${SERVER}/user/join`, payload, {headers})
@@ -14,6 +23,7 @@ export const joinApi = async (payload) => {
         return error
     }
 }
+
 
 export const loginApi = async (payload) => {
     try{

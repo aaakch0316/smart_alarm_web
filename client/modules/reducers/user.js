@@ -54,7 +54,20 @@ const userSlice = createSlice({
         delUserFailure(state, {payload}){
             state.data = payload
             state.loading = false;
-        }
+        },
+
+        
+        alarmRequest: (state, payload) => {
+            state.loading = true;
+        },
+        alarmSuccess: (state, {payload}) => {
+            state.data = [...state.data, payload]
+            state.loading = false;
+        },
+        alarmFailure: (state, {payload}) => {
+            state.data = payload;
+            state.loading = false;
+        },
     }
 })
 

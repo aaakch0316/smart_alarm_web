@@ -1,21 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import { useRouter } from 'next/router'
 import Button from '@mui/material/Button';
 
-// import {useDispatch}  from "react-redux";
-
-// ai가 보이는 메인 페이지
-// 알람추가를 할수있다
-// 알람을 테이블에서 확인할수있고, 수정 삭제 가능
 export function Studio({data}) {
-    // const dispatch = useDispatch()
-    const router = useRouter()
-    // mount
-    // useEffect(() => {
-    //     if (!localStorage.getItem("token")) {
-    //         router.push('/login')
-    //     }
-    // })
+
     const [hours, setHours] = useState('')
     const [min, setMin] = useState('')
     const [seconds, setSeconds] = useState('')
@@ -30,14 +17,10 @@ export function Studio({data}) {
         };
         
         setInterval(setDate, 1000);
-    })
+    }, [])
     return (
         <div className="layout">
-            {/* <button className="btn btn__primary" onClick={()=>{
-                dispatch(getToken())
-            }}>1: 토큰받기</button> */}
-            {/* 알람 추가하는 모달에 넣기 */}
-            {/* <button className="btn btn__primary">2: 영상보기</button> */}
+
             <div className="video">
                 <div className="time">
                     <span className="hand">현재시각  </span>
@@ -59,13 +42,14 @@ export function Studio({data}) {
                         </thead>
 
                         <tbody className="table__body">
-                            {data?.userDetail.alarm.map(({_id, content, alerthour, alertmin, period, mp4Url})=>(
+                            {/* {data.map(({_id, content, alerthour, alertmin, period, mp4Url})=>( */}
+                            {data[0]?.userDetail.alarm.map(({_id, content, alerthour, alertmin, period, mp4Url})=>(
                                 <tr key={_id}>
                                     <td>{alerthour} : {alertmin}</td>
                                     <td>{content}</td>
                                     {mp4Url? 
                                     <td>
-                                        <Button variant="contained">수정</Button>
+                                        {/* <Button variant="contained">수정</Button> */}
                                         <Button variant="contained">삭제</Button>
                                     </td>
                                     : 
@@ -73,10 +57,11 @@ export function Studio({data}) {
                                         <Button
                                             fullWidth
                                             variant="contained"
-                                            sx={{ mt: 1, mb: 2 }}
+                                            // sx={{ mt: 1, mb: 2 }}
                                         >
                                             모델생성
                                         </Button>
+                                        <Button variant="contained">삭제</Button>
                                     </td>
                                     }
                                 </tr>

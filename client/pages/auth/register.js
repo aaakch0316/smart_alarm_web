@@ -26,7 +26,6 @@ export default function RegisterPage() {
     }
     const onSubmit = e => {
         e.preventDefault()
-        console.log(user)
         if (user.password === user.password2){
             dispatch(userActions.joinRequest({
                 email: user.email,

@@ -6,7 +6,7 @@ import BasicModal from './BasicModal'
 // import { setModalOpen } from "@/modules";
 // import { setCallToken } from "@/modules";
 
-export function Header({data}) {
+export function Header({data, onSubmitAlarm, onChangeAlarm, modalObject}) {
 	// const dispatch = useDispatch();
 
 	return (
@@ -25,7 +25,7 @@ export function Header({data}) {
 			>
 				<PersonAddSVG /> <b>알람 추가</b>
 			</Button> */}
-			<BasicModal />
+			<BasicModal modalObject={modalObject} onSubmitAlarm={onSubmitAlarm} onChangeAlarm={onChangeAlarm} />
             {/* <button onClick={alertHello}>hello</button> */}
 		</header>
 	);

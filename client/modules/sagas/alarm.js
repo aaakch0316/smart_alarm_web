@@ -15,7 +15,7 @@ function* alarm(user){
         Router.push('/auth/login');
 
     }catch(error){
-        yield put(userActions.joinFailure(error))
+        yield put(userActions.alarmFailure(error))
     }
 }
 

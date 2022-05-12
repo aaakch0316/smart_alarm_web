@@ -12,8 +12,6 @@ export default function LoginPage() {
     const dispatch = useDispatch()
     const onChange = e => {
         e.preventDefault()
-        console.log(e.target.name)
-        console.log(e.target.value)
         const {name, value} = e.target;
         setUser({
             ...user,
@@ -22,11 +20,8 @@ export default function LoginPage() {
     }
     const onSubmit = e => {
         e.preventDefault()
-        // console.log('??')
-        // console.log(user.email, user.password)
         dispatch(userActions.loginRequest(user))
         if (user.email && user.password) {
-            console.log(user.email, user.password)
             dispatch(userActions.loginRequest({
                 email: user.email,
                 password: user.password

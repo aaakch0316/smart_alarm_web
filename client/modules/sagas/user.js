@@ -2,10 +2,27 @@ import { put, call, takeLatest } from "redux-saga/effects"
 import Router from 'next/router';
 import { userActions } from "../reducers/user"
 import {getToken, setToken, removeToken} from "../../services/tokenService";
-import { joinApi, loginApi, logoutApi } from "../../pages/api/user"
+import { joinApi, loginApi, logoutApi, alarmApi } from "../../pages/api/user"
 
 
+function* alarm(data){
+    try{
+        console.log('saga 들어옴') 
+        console.log(data) 
 
+        const response = yield alarmApi(data.payload)
+        yield put(userActions.alarmSuccess(response))
+        console.log(response)
+        Router.push('/');
+
+    }catch(error){
+        yield put(userActions.alarmFailure(error))
+    }
+}
+
+export function* watchalarm(){
+    yield takeLatest(userActions.alarmRequest, alarm)
+}
 
 
 function* join(user){
