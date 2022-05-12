@@ -28,6 +28,10 @@ app.post('/login', cors(corsOptions), (req, res) => {
     UserService().login(req, res)
 })
 
+app.post('/alarm', cors(corsOptions), (req, res) => {
+    UserService().alarm(req, res)
+})
+
 
 app.post('/', cors(corsOptions), (req, res) => {
     console.log('token test')

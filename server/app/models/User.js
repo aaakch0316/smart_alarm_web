@@ -93,5 +93,14 @@ export default function UserModel(mongoose) {
             })
         })
     }
+    userSchema.methods.addAlarm = function (alarm, cb) {
+        console.log(1)
+        console.log(alarm)
+        var user = this;
+        console.log('드렁옴??', user)
+        user.alarm.push(alarm)
+        user.save()
+        cb(null, user)
+    }
     return mongoose.model('User', userSchema)
 }
