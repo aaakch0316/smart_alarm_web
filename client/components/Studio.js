@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import Button from '@mui/material/Button';
 import LocalTime from './Localtime';
+import AiSelectorModal from './AiSelectorModal';
 
-export function Studio({data, onDelAlarm}) {
+export function Studio({data, onDelAlarm, modalAiObject}) {
 
     // const [hours, setHours] = useState('')
     // const [min, setMin] = useState('')
@@ -65,6 +66,12 @@ export function Studio({data, onDelAlarm}) {
                                         >
                                             모델생성
                                         </Button>
+                            			<AiSelectorModal 
+                                        modalAiObject={modalAiObject} 
+                                        // onSubmitAlarm={onSubmitAlarm} 
+                                        // onChangeAlarm={onChangeAlarm} 
+                                        />
+
                                         <Button variant="contained" onClick={(e)=> onDelAlarm(alarm, e)} >삭제</Button>
                                     </td>
                                     }
