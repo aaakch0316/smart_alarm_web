@@ -32,6 +32,10 @@ app.post('/alarm', cors(corsOptions), (req, res) => {
     UserService().alarm(req, res)
 })
 
+app.post('/delalarm', cors(corsOptions), (req, res) => {
+    UserService().delAlarm(req, res)
+})
+
 
 app.post('/', cors(corsOptions), (req, res) => {
     console.log('token test')

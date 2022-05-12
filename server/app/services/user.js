@@ -75,6 +75,28 @@ export default function UserService() {
                 }
             })
         },
+        delAlarm(req, res) {
+            User.findOne({
+                email: req.body.email
+            }, function (err, user) {
+                if (err) 
+                    throw err
+                if (!user) {
+                    res
+                        .status(401)
+                        .send({success: false, message: '해당 ID가 존재하지 않습니다'});
+                } else {
+                    // console.log(JSON.stringify(user.alarm))
+                    // console.log(req.body)
+                    user.delAlarm(req.body, (err,user)=>{
+                        if(err) return res.json({
+                            success : false,
+                        })
+                        res.json(user)
+                    })
+                }
+            })
+        },
         getUserByToken(req, res, next){ 
             let token = req.body.token;
             console.log(token)
