@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -24,22 +24,19 @@ const style = {
   p: 4,
 };
 
-export default function BasicModal() {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+export default function BasicModal({modalObject, onSubmitAlarm, onChangeAlarm}) {
 
   return (
     <div>
       <Button 
-        onClick={handleOpen} 
+        onClick={modalObject.handleOpenModal} 
         variant="contained"
 				size="large"
 				className="btn__icon"
         ><PersonAddSVG /> Add Alarm</Button>
       <Modal
-        open={open}
-        onClose={handleClose}
+        open={modalObject.openModal}
+        onClose={modalObject.handleCloseModal}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -52,7 +49,7 @@ export default function BasicModal() {
             Duis mollis, est non commodo luctus, nisi erat porttitor ligula 
           </Typography>
           <Box component="form" noValidate sx={{ mt: 3 }} 
-          // onSubmit={onSubmit}
+          onSubmit={onSubmitAlarm}
           >
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6} >
@@ -64,7 +61,7 @@ export default function BasicModal() {
                   id="alerthour"
                   label="Alarm Hour"
                   autoFocus
-                  // onChange={onChange}
+                  onChange={onChangeAlarm}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -75,7 +72,7 @@ export default function BasicModal() {
                   label="Alarm Min"
                   name="alertmin"
                   // autoComplete="family-name"
-                  // onChange={onChange}
+                  onChange={onChangeAlarm}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -86,7 +83,7 @@ export default function BasicModal() {
                   label="content"
                   name="content"
                   // autoComplete="email"
-                  // onChange={onChange}
+                  onChange={onChangeAlarm}
                 />
               </Grid>
             </Grid>
@@ -100,9 +97,9 @@ export default function BasicModal() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="/auth/login" variant="body2">
+                <Button variant="body2" onClick={modalObject.handleCloseModal}>
                   CANCEL
-                </Link>
+                </Button>
               </Grid>
             </Grid>
           </Box>
