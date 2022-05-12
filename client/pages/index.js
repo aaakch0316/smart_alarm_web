@@ -7,6 +7,7 @@ import { Header, Layout, Modal, Studio } from "@/components";
 import useToken from "@/hooks/useToken";
 import LinearIndeterminate from "@/components/LinearProgress ";
 import { userActions } from '@/modules/reducers/user.js';
+import { aiActions } from '@/modules/reducers/ai.js';
 
 
 // import "@/styles/main.scss";
@@ -31,7 +32,11 @@ export default function Home() {
         openModal, handleCloseModal, handleOpenModal
     }
     const [openAiModal, setOpenAiModal] = useState(false);
-    const handleOpenAiModal = () => setOpenAiModal(true);
+    const handleOpenAiModal = () => {
+        dispatch(aiActions.modelListRequest())
+
+        // setOpenAiModal(true);
+    }
     const handleCloseAiModal = () => setOpenAiModal(false);
     const modalAiObject = {
         openAiModal, handleCloseAiModal, handleOpenAiModal
