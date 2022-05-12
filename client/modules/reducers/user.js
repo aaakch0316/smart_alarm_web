@@ -68,6 +68,17 @@ const userSlice = createSlice({
             state.data = payload;
             state.loading = false;
         },
+        delAlarmRequest: (state, payload) => {
+            state.loading = true;
+        },
+        delAlarmSuccess: (state, {payload}) => {
+            state.data = [...state.data, payload]
+            state.loading = false;
+        },
+        delAlarmFailure: (state, {payload}) => {
+            state.data = payload;
+            state.loading = false;
+        },
     }
 })
 

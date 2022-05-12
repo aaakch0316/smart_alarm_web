@@ -1,32 +1,32 @@
 import React, {useState, useEffect} from 'react';
 import Button from '@mui/material/Button';
 
-export function Studio({data}) {
+export function Studio({data, onDelAlarm}) {
 
-    const [hours, setHours] = useState('')
-    const [min, setMin] = useState('')
-    const [seconds, setSeconds] = useState('')
+    // const [hours, setHours] = useState('')
+    // const [min, setMin] = useState('')
+    // const [seconds, setSeconds] = useState('')
 
-    useEffect(() => { 
-        // 현재시각
-        const setDate = () => {
-            const now = new Date();
-            setHours(String(now.getHours()).padStart(2,'0'));
-            setMin(String(now.getMinutes()).padStart(2,'0'));
-            setSeconds(String(now.getSeconds()).padStart(2,'0'));
-        };
+    // useEffect(() => { 
+    //     // 현재시각
+    //     const setDate = () => {
+    //         const now = new Date();
+    //         setHours(String(now.getHours()).padStart(2,'0'));
+    //         setMin(String(now.getMinutes()).padStart(2,'0'));
+    //         setSeconds(String(now.getSeconds()).padStart(2,'0'));
+    //     };
         
-        setInterval(setDate, 1000);
-    }, [])
+    //     setInterval(setDate, 1000);
+    // }, [])
     return (
         <div className="layout">
 
             <div className="video">
                 <div className="time">
-                    <span className="hand">현재시각  </span>
+                    {/* <span className="hand">현재시각  </span>
                     <span className="hand hour-hand">{hours}:</span>
                     <span className="hand min-hand">{min}:</span>
-                    <span className="hand sec-hand">{seconds}</span>
+                    <span className="hand sec-hand">{seconds}</span> */}
                 </div>
                 <div className="video-table">
                     <video width="80%" height="500px"  controls>
@@ -43,14 +43,14 @@ export function Studio({data}) {
 
                         <tbody className="table__body">
                             {/* {data.map(({_id, content, alerthour, alertmin, period, mp4Url})=>( */}
-                            {data[0]?.userDetail.alarm.map(({_id, content, alerthour, alertmin, period, mp4Url})=>(
-                                <tr key={_id}>
-                                    <td>{alerthour} : {alertmin}</td>
-                                    <td>{content}</td>
-                                    {mp4Url? 
+                            {data[0]?.userDetail.alarm.map((alarm)=>(
+                                <tr key={alarm._id}>
+                                    <td>{alarm.alerthour} : {alarm.alertmin}</td>
+                                    <td>{alarm.content}</td>
+                                    {alarm.mp4Url? 
                                     <td>
                                         {/* <Button variant="contained">수정</Button> */}
-                                        <Button variant="contained">삭제</Button>
+                                        <Button variant="contained" onClick={(e)=>onDelAlarm(alarm, e)} >삭제</Button>
                                     </td>
                                     : 
                                     <td>
@@ -61,7 +61,7 @@ export function Studio({data}) {
                                         >
                                             모델생성
                                         </Button>
-                                        <Button variant="contained">삭제</Button>
+                                        <Button variant="contained" onClick={(e)=> onDelAlarm(alarm, e)} >삭제</Button>
                                     </td>
                                     }
                                 </tr>

@@ -43,6 +43,7 @@ export default function Home() {
     const [alarm, setAlarm] =useState({
         content:'', alerthour:'', alertmin: '', email: data[0]?.userDetail.email
     })
+    const inputData = {email: data[0]?.userDetail.email}
 
     const onSubmitAlarm = (e) => {
         e.preventDefault()
@@ -60,6 +61,13 @@ export default function Home() {
         })
     }
 
+    const onDelAlarm = (data, e) => {
+        const inputValue = {_id:data._id, ...inputData}
+        dispatch(userActions.delAlarmRequest(inputValue))
+        console.log(inputValue)
+        
+    }
+
 
     return (
         <Layout>
@@ -67,7 +75,7 @@ export default function Home() {
                 <title>DEEPBRAIN</title>
             </Head>
             <Header data={data[0]} modalObject={modalObject} onSubmitAlarm={onSubmitAlarm} onChangeAlarm={onChangeAlarm} />
-            <Studio data={data} />
+            <Studio data={data} onDelAlarm={onDelAlarm} />
         </Layout>
     )
 }

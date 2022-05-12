@@ -15,6 +15,15 @@ export const alarmApi = async (payload) => {
     }
 }
 
+export const delAlarmApi = async (payload) => {
+    try {
+        const response= await axios.post(`${SERVER}/user/delalarm`, payload,{headers} )
+        return response.data    
+    }catch(err){
+        return err;
+    }
+}
+
 export const joinApi = async (payload) => {
     try{
         const response = await axios.post(`${SERVER}/user/join`, payload, {headers})
