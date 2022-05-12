@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Button from '@mui/material/Button';
+import LocalTime from './Localtime';
 
 export function Studio({data, onDelAlarm}) {
 
@@ -18,11 +19,14 @@ export function Studio({data, onDelAlarm}) {
         
     //     setInterval(setDate, 1000);
     // }, [])
+
+
     return (
         <div className="layout">
 
             <div className="video">
                 <div className="time">
+                    <LocalTime />
                     {/* <span className="hand">현재시각  </span>
                     <span className="hand hour-hand">{hours}:</span>
                     <span className="hand min-hand">{min}:</span>
