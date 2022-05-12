@@ -59,13 +59,13 @@ export function Studio({data, onDelAlarm, modalAiObject}) {
                                     </td>
                                     : 
                                     <td>
-                                        <Button
+                                        {/* <Button
                                             fullWidth
                                             variant="contained"
                                             // sx={{ mt: 1, mb: 2 }}
                                         >
                                             모델생성
-                                        </Button>
+                                        </Button> */}
                             			<AiSelectorModal 
                                         modalAiObject={modalAiObject} 
                                         // onSubmitAlarm={onSubmitAlarm} 

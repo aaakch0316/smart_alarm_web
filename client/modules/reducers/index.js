@@ -1,7 +1,7 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import { HYDRATE } from 'next-redux-wrapper' 
 import users from './user.js'  
-import alarms from './alarm.js'
+// import alarms from './alarm.js'
 
 const rootReducer = (state, action) => {
     if (action.type === HYDRATE) { 
@@ -12,7 +12,7 @@ const rootReducer = (state, action) => {
     }
     return combineReducers({
         users,
-        alarms
+        // alarms
     })(state, action) 
 }
 
