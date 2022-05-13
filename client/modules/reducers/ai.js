@@ -17,9 +17,10 @@ const aiSlice = createSlice({
         modelListRequest: (state, payload) => {
             state.loading = true;
         },
-        modelListSuccess: (state, payload) => {
+        modelListSuccess: (state, {payload}) => {
             state.loading = false;
-            state.model= [payload]
+            state.modelList = payload
+
         },
         modelListFailure: (state, payload) => {
             state.loading = false;

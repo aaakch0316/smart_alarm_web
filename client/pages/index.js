@@ -24,6 +24,7 @@ export default function Home() {
     }
 
     const data = useSelector((state) => state.users.data)
+    const dataAi = useSelector((state) => state.ais)
 
     const [openModal, setOpenModal] = useState(false);
     const handleOpenModal = () => setOpenModal(true);
@@ -33,9 +34,9 @@ export default function Home() {
     }
     const [openAiModal, setOpenAiModal] = useState(false);
     const handleOpenAiModal = () => {
-        dispatch(aiActions.modelListRequest())
+        dispatch(aiActions.modelListRequest(dataAi))
 
-        // setOpenAiModal(true);
+        setOpenAiModal(true);
     }
     const handleCloseAiModal = () => setOpenAiModal(false);
     const modalAiObject = {
@@ -83,7 +84,7 @@ export default function Home() {
                 <title>DEEPBRAIN</title>
             </Head>
             <Header data={data[0]} modalObject={modalObject} onSubmitAlarm={onSubmitAlarm} onChangeAlarm={onChangeAlarm} />
-            <Studio data={data} onDelAlarm={onDelAlarm} modalAiObject={modalAiObject} />
+            <Studio data={data} onDelAlarm={onDelAlarm} modalAiObject={modalAiObject} dataAi={dataAi} />
         </Layout>
     )
 }

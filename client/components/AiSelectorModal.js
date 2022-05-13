@@ -23,11 +23,15 @@ const style = {
 
 export default function AiSelectorModal({
     modalAiObject, 
+    dataAi
     // onSubmitAlarm, 
     // onChangeAlarm
 }) {
 
-
+  console.log('modal')
+  console.log(dataAi.modelList)
+  console.log(dataAi.modelList[0])
+  console.log(dataAi.modelList[1])
   return (
     <div>
       <Button 
@@ -49,6 +53,7 @@ export default function AiSelectorModal({
           <CssBaseline />
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             Duis mollis, est non commodo luctus, nisi erat porttitor ligula 
+            {/* {JSON.stringify(dataAi.modelList[0])} */}
           </Typography>
           <Box component="form" noValidate sx={{ mt: 3 }} 
         //   onSubmit={onSubmitAlarm}
