@@ -5,7 +5,6 @@ export const getToken = () => {
 }
 
 export const setToken = (token) => {
-    console.log('ewfaef')
     localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY_NAME,token);
 }
 

@@ -7,6 +7,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
+import ActionAreaCard from './ActionAreaCard';
 
 
 const style = {
@@ -58,7 +59,12 @@ export default function AiSelectorModal({
           <Box component="form" noValidate sx={{ mt: 3 }} 
         //   onSubmit={onSubmitAlarm}
           >
+            {/* <ActionAreaCard /> */}
             <Grid container spacing={2}>
+              {dataAi.modelList.map((card) =>
+                <ActionAreaCard card={card} />
+              )}
+            {/* <ActionAreaCard /> */}
               <Grid item xs={12} sm={6} >
                 <TextField
                   // autoComplete="given-name"

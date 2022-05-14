@@ -65,7 +65,7 @@ function* login(login){
         console.log(response.accessToken)
         yield call(setToken, response.accessToken)
         yield put(userActions.loginSuccess(response))
-        Router.push('/');
+        yield Router.push('/');
     }catch(error){
         yield put(userActions.loginFailure(error))
     }
