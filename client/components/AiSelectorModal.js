@@ -61,7 +61,7 @@ export default function AiSelectorModal({
                 <ActionAreaCard card={card} />
               )}
             {/* <ActionAreaCard /> */}
-              <Grid item xs={12} sm={6} >
+              {/* <Grid item xs={12} sm={6} >
                 <TextField
                   // autoComplete="given-name"
                   name="alerthour"
@@ -83,13 +83,13 @@ export default function AiSelectorModal({
                   // autoComplete="family-name"
                 //   onChange={onChangeAlarm}
                 />
-              </Grid>
-              <Grid item xs={12}>
+              </Grid> */}
+              <Grid item xs={12} sm={12}>
                 <TextField
                   required
                   fullWidth
                   id="content"
-                  label="content"
+                  label="sdafasdf"
                   name="content"
                   // autoComplete="email"
                 //   onChange={onChangeAlarm}

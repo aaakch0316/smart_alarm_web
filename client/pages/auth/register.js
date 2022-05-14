@@ -12,8 +12,8 @@ import { userActions } from '../../modules/reducers/user.js';
 
 export default function RegisterPage() {
     const [open, setOpen] = useState(false)
-    const [user, setUser] =useState({
-        email:'', password:'', name: ''
+    const [user, setUser] = useState({
+        email:'', password:'', name: '', feature: []
     })
     const dispatch = useDispatch()
     const onChange = e => {
@@ -30,7 +30,8 @@ export default function RegisterPage() {
             dispatch(userActions.joinRequest({
                 email: user.email,
                 password: user.password,
-                name: user.name
+                name: user.name,
+                feature: user.feature
             }))
         } else {
             setOpen(true)
