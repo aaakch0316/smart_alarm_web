@@ -39,6 +39,9 @@ export default function Home() {
     }
     const onTargetModelInfo = (targetObject) =>{
         console.log(targetObject)
+        if (targetObject.language === 'ko'){
+            alert("지원하지 않는 언어 입니다. 다시 선택해 주세요")
+        }
         setAiModelInfo({
             ...aiModelInfo,
             ['language']: targetObject.language,
