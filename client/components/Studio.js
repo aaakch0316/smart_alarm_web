@@ -23,7 +23,7 @@ export function Studio({data, videoSource, setVideoSource, onDelAlarm, modalAiOb
     useEffect(() => {
         console.log(document.querySelector('#video'))
         document.querySelector('#video').autoplay = true;
-        console.log(data[0]?.userDetail.alarm)
+        console.log("url변화", data[0]?.userDetail.alarm)
     }, [videoSource])
 
 
@@ -39,8 +39,8 @@ export function Studio({data, videoSource, setVideoSource, onDelAlarm, modalAiOb
                     <span className="hand sec-hand">{seconds}</span> */}
                 </div>
                 <div className="video-table">
-                    <video id="video" width="80%" height="500px" controls autoplay>
-                        <source src={videoSource}/>
+                    <video src={videoSource} id="video" width="80%" height="500px" controls autoplay>
+                        {/* <source /> */}
                     </video>
                     <table className="table">
                         <thead className="table__head">
