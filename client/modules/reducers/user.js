@@ -14,7 +14,8 @@ const userSlice = createSlice({
             state.loading = true;
         },
         joinSuccess: (state, {payload}) => {
-            state.data = [...state.data, payload]
+            // state.data = [...state.data, payload]
+            state.data = []
             state.loading = false;
         },
         joinFailure: (state, {payload}) => {

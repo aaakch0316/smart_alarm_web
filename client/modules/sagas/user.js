@@ -46,7 +46,7 @@ function* join(user){
     try{
         const response = yield joinApi(user.payload)
         yield put(userActions.joinSuccess(response))
-        Router.push('/auth/login');
+        yield Router.push('/auth/login');
 
     }catch(error){
         yield put(userActions.joinFailure(error))
