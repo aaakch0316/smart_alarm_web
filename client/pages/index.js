@@ -25,6 +25,7 @@ export default function Home() {
 
     const data = useSelector((state) => state.users.data)
     const dataAi = useSelector((state) => state.ais)
+    console.log(data, dataAi)
 
     const [openModal, setOpenModal] = useState(false);
     const handleOpenModal = () => setOpenModal(true);
@@ -54,8 +55,9 @@ export default function Home() {
     const [alarm, setAlarm] =useState({
         content:'', alerthour:'', alertmin: '', email: data[0]?.userDetail.email
     })
+    const [alarmList, setAlarmList] = useState([])
     const inputData = {email: data[0]?.userDetail.email}
-
+    const [videoSource, setVideoSource] = useState("https://ai-platform-public.s3.ap-northeast-2.amazonaws.com/ysy_2_a8d4cf2dbe8a094cc62a0a1e6a80cfc8.mp4")
     const onSubmitAlarm = (e) => {
         e.preventDefault()
         dispatch(userActions.alarmRequest(alarm))
@@ -71,6 +73,13 @@ export default function Home() {
         })
     }
 
+    const onAddAlarm = (data, e) => {
+        setAlarmList([
+            ...alarmList,
+            dispatch(userActions.addAlarmRequest(inputValue))
+        ])
+    }
+
     const onDelAlarm = (data, e) => {
         const inputValue = {_id:data._id, ...inputData}
         dispatch(userActions.delAlarmRequest(inputValue))
@@ -84,7 +93,7 @@ export default function Home() {
                 <title>DEEPBRAIN</title>
             </Head>
             <Header data={data[0]} modalObject={modalObject} onSubmitAlarm={onSubmitAlarm} onChangeAlarm={onChangeAlarm} />
-            <Studio data={data} onDelAlarm={onDelAlarm} modalAiObject={modalAiObject} dataAi={dataAi} />
+            <Studio data={data} videoSource={videoSource} setVideoSource={setVideoSource} onDelAlarm={onDelAlarm} modalAiObject={modalAiObject} dataAi={dataAi} />
         </Layout>
     )
 }

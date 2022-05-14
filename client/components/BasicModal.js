@@ -46,7 +46,7 @@ export default function BasicModal({modalObject, onSubmitAlarm, onChangeAlarm}) 
           </Typography>
           <CssBaseline />
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula 
+            시간과 말하고 싶은 문구를 적어주세요 (ex. 엄마 약먹을 시간이야)
           </Typography>
           <Box component="form" noValidate sx={{ mt: 3 }} 
           onSubmit={onSubmitAlarm}

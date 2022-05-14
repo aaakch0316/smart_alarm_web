@@ -3,9 +3,8 @@ import Button from '@mui/material/Button';
 import LocalTime from './Localtime';
 import AiSelectorModal from './AiSelectorModal';
 
-export function Studio({data, onDelAlarm, modalAiObject, dataAi}) {
+export function Studio({data, videoSource, setVideoSource, onDelAlarm, modalAiObject, dataAi}) {
 
-    // const [hours, setHours] = useState('')
     // const [min, setMin] = useState('')
     // const [seconds, setSeconds] = useState('')
 
@@ -20,22 +19,25 @@ export function Studio({data, onDelAlarm, modalAiObject, dataAi}) {
         
     //     setInterval(setDate, 1000);
     // }, [])
-
-
+    useEffect(() => {
+        console.log(document.querySelector('#video'))
+        document.querySelector('#video').autoplay = true;
+        console.log(data[0]?.userDetail.alarm)
+    }, [videoSource])
     return (
         <div className="layout">
 
             <div className="video">
                 <div className="time">
-                    <LocalTime />
+                    <LocalTime data={data} setVideoSource={setVideoSource}/>
                     {/* <span className="hand">현재시각  </span>
                     <span className="hand hour-hand">{hours}:</span>
                     <span className="hand min-hand">{min}:</span>
                     <span className="hand sec-hand">{seconds}</span> */}
                 </div>
                 <div className="video-table">
-                    <video width="80%" height="500px"  controls>
-                        <source src="https://ai-platform-public.s3.ap-northeast-2.amazonaws.com/ysy_2_a8d4cf2dbe8a094cc62a0a1e6a80cfc8.mp4"></source>
+                    <video id="video" width="80%" height="500px" controls autoplay>
+                        <source src={videoSource}/>
                     </video>
                     <table className="table">
                         <thead className="table__head">
