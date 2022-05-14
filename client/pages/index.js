@@ -24,6 +24,7 @@ export default function Home() {
     }
 
     const data = useSelector((state) => state.users.data)
+
     const dataAi = useSelector((state) => state.ais)
     console.log(data, dataAi)
 

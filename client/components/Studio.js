@@ -19,11 +19,14 @@ export function Studio({data, videoSource, setVideoSource, onDelAlarm, modalAiOb
         
     //     setInterval(setDate, 1000);
     // }, [])
+    const latestData = data.length -1
     useEffect(() => {
         console.log(document.querySelector('#video'))
         document.querySelector('#video').autoplay = true;
         console.log(data[0]?.userDetail.alarm)
     }, [videoSource])
+
+
     return (
         <div className="layout">
 
@@ -50,7 +53,7 @@ export function Studio({data, videoSource, setVideoSource, onDelAlarm, modalAiOb
 
                         <tbody className="table__body">
                             {/* {data.map(({_id, content, alerthour, alertmin, period, mp4Url})=>( */}
-                            {data[0]?.userDetail.alarm.map((alarm)=>(
+                            {data[latestData]?.userDetail?.alarm.map((alarm)=>(
                                 <tr key={alarm._id}>
                                     <td>{alarm.alerthour} : {alarm.alertmin}</td>
                                     <td>{alarm.content}</td>

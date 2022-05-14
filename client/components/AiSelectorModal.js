@@ -29,10 +29,6 @@ export default function AiSelectorModal({
     // onChangeAlarm
 }) {
 
-  console.log('modal')
-  console.log(dataAi.modelList)
-  console.log(dataAi.modelList[0])
-  console.log(dataAi.modelList[1])
   return (
     <div>
       <Button 
