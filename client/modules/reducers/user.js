@@ -62,7 +62,7 @@ const userSlice = createSlice({
             state.loading = true;
         },
         alarmSuccess: (state, {payload}) => {
-            state.data = [...state.data, payload]
+            state.data[0].userDetail = payload;
             state.loading = false;
         },
         alarmFailure: (state, {payload}) => {
@@ -73,7 +73,7 @@ const userSlice = createSlice({
             state.loading = true;
         },
         delAlarmSuccess: (state, {payload}) => {
-            state.data = [...state.data, payload]
+            state.data[0].userDetail = payload;
             state.loading = false;
         },
         delAlarmFailure: (state, {payload}) => {
