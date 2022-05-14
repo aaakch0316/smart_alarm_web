@@ -24,9 +24,27 @@ export default function Home() {
     }
 
     const data = useSelector((state) => state.users.data)
-
     const dataAi = useSelector((state) => state.ais)
-    console.log(data, dataAi)
+
+    const [ aiModelInfo, setAiModelInfo ] = useState({
+        language: '', text: '', model: ''
+    })
+
+    const onChangeModelInfo = e => { 
+        const {name, value} = e.target;
+        setAiModelInfo({
+            ...aiModelInfo,
+            [name]: value
+        })
+    }
+    const onTargetModelInfo = (targetObject) =>{
+        console.log(targetObject)
+        setAiModelInfo({
+            ...aiModelInfo,
+            ['language']: targetObject.language,
+            ['model']: targetObject.model
+        })
+    }
 
     const [openModal, setOpenModal] = useState(false);
     const handleOpenModal = () => setOpenModal(true);
@@ -40,11 +58,15 @@ export default function Home() {
 
         setOpenAiModal(true);
     }
-    const handleCloseAiModal = () => setOpenAiModal(false);
+    const handleCloseAiModal = (e) => {
+        // e.preventDefault()
+        console.log(aiModelInfo)
+        setOpenAiModal(false);
+    }
     const modalAiObject = {
         openAiModal, handleCloseAiModal, handleOpenAiModal
     }
-
+    
 
 
 
@@ -94,7 +116,7 @@ export default function Home() {
                 <title>DEEPBRAIN</title>
             </Head>
             <Header data={data[0]} modalObject={modalObject} onSubmitAlarm={onSubmitAlarm} onChangeAlarm={onChangeAlarm} />
-            <Studio data={data} videoSource={videoSource} setVideoSource={setVideoSource} onDelAlarm={onDelAlarm} modalAiObject={modalAiObject} dataAi={dataAi} />
+            <Studio data={data} onChangeModelInfo={onChangeModelInfo} onTargetModelInfo={onTargetModelInfo} videoSource={videoSource} setVideoSource={setVideoSource} onDelAlarm={onDelAlarm} modalAiObject={modalAiObject} dataAi={dataAi} />
         </Layout>
     )
 }

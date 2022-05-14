@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import LocalTime from './Localtime';
 import AiSelectorModal from './AiSelectorModal';
 
-export function Studio({data, videoSource, setVideoSource, onDelAlarm, modalAiObject, dataAi}) {
+export function Studio({data, onChangeModelInfo, onTargetModelInfo, videoSource, setVideoSource, onDelAlarm, modalAiObject, dataAi}) {
 
     // const [min, setMin] = useState('')
     // const [seconds, setSeconds] = useState('')
@@ -74,6 +74,8 @@ export function Studio({data, videoSource, setVideoSource, onDelAlarm, modalAiOb
                             			<AiSelectorModal 
                                         modalAiObject={modalAiObject} 
                                         dataAi={dataAi}
+                                        onChangeModelInfo={onChangeModelInfo}
+                                        onTargetModelInfo={onTargetModelInfo}
                                         // onSubmitAlarm={onSubmitAlarm} 
                                         // onChangeAlarm={onChangeAlarm} 
                                         />
