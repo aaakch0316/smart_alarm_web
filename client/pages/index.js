@@ -101,12 +101,6 @@ export default function Home() {
         })
     }
 
-    const onAddAlarm = (data, e) => {
-        setAlarmList([
-            ...alarmList,
-            dispatch(userActions.addAlarmRequest(inputValue))
-        ])
-    }
 
     const onDelAlarm = (data, e) => {
         const inputValue = {_id:data._id, ...inputData}

@@ -4,23 +4,24 @@ const LocalTime = ({data, setVideoSource}) => {
     const [hour, setHour] = useState(new Date().getHours());
     const [minute, setMinute] = useState(new Date().getMinutes());
 
-
+    
     useEffect(() => {
-        const id = setInterval(async () => {
+        const id = setInterval(() => {
             setTime(new Date());
             const sec = new Date().getSeconds();
             const alarmList = data[0].userDetail.alarm
-            if (Number(sec) === 1) {
+            if (sec === 1) {
                 // 비동기 처리
-                await setHour(new Date().getHours());
-                await setMinute(new Date().getMinutes());
-                console.log("실행되는지 확인")
+                setHour(String(new Date().getHours()));
+                setMinute(String(new Date().getMinutes()));
+                console.log("실행되는지 확인", new Date().getMinutes())
                 // 아래 함수가 위에 함수보다 먼저 실행됨
                 alarmList.forEach((val, idx) => {
-                    console.log(val.alerthour, val.alertmin, hour, minute,Number(val.alerthour) === Number(hour) && Number(val.alertmin) === Number(minute))
-                    if (Number(val.alerthour) === Number(hour) && Number(val.alertmin) === Number(minute)) {
+                    // console.log(val.alerthour, val.alertmin, new Date().getHours(), new Date().getMinutes(),Number(val.alerthour) === Number(hour) && Number(val.alertmin) === Number(minute))
+                    if (Number(val.alerthour) === Number(new Date().getHours()) && Number(val.alertmin) === Number(new Date().getMinutes())) {
                         // 동영상 url넘겨주면 바꿔줌
-                        setVideoSource(vla.mp4Url)
+                        // setVideoSource(val.mp4Url)
+                        setVideoSource('./sample-mp4-file-small.mp4')
                         console.log("hi")
                     }
                 })

@@ -19,8 +19,8 @@ export default function RegisterPage() {
         고혈압: false,
         당뇨병: false,
         고지혈증: false,
-        관절염 : false,
-        치매 : false
+        관절염: false,
+        치매: false
         
     })
     
@@ -48,28 +48,12 @@ export default function RegisterPage() {
     }
     const onCheck = e => {
         e.preventDefault()
-        const {name, value} = e.target;
+        const name = e.target.name;
 
         setDiseases({
             ...diseases,
             [name] : e.target.checked
         })
-
-
-        // let updateList = [...diseases];
-        // console.log('1. updatae', updateList)
-        // if (e.target.checked) {
-        //     updateList = [...diseases, name];
-        //     console.log('2. updatae', updateList)
-
-        // } else {
-        //     updateList.splice(diseases.indexOf(name), 1);
-        //     console.log('3. updatae', updateList)
-            
-        // }
-        // console.log("diseases", diseases, updateList)
-        // setDiseases((pre)=> [...pre, name])
-        // console.log("diseases", diseases, updateList)
     }
 
 
@@ -80,6 +64,7 @@ export default function RegisterPage() {
                 email: user.email,
                 password: user.password,
                 name: user.name,
+                age: String(user.age),
                 feature: user.feature
             }))
         } else {

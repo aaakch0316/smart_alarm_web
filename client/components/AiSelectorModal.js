@@ -34,25 +34,25 @@ export default function AiSelectorModal({
 
   return (
     <div>
-      <Button 
-        onClick={modalAiObject.handleOpenAiModal} 
-        variant="contained"
-				size="large"
+        <Button 
+            onClick={modalAiObject.handleOpenAiModal} 
+            variant="contained"
+				size="midium"
 				className="btn__icon"
-        > create modal</Button>
-      <Modal
-        open={modalAiObject.openAiModal}
-        // onClose={modalAiObject.handleCloseAiModal}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
+        >가족 선택</Button>
+        <Modal
+            open={modalAiObject.openAiModal}
+            // onClose={modalAiObject.handleCloseAiModal}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+        >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Create Model
+            가족 선택
           </Typography>
           <CssBaseline />
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula 
+            원하시는 가족을 선택해주세요
             {/* {JSON.stringify(dataAi.modelList[0])} */}
           </Typography>
           <Box component="form" noValidate sx={{ mt: 3 }} 

@@ -39,7 +39,7 @@ export function Studio({data, aiModelInfo, onChangeModelInfo, onTargetModelInfo,
                     <span className="hand sec-hand">{seconds}</span> */}
                 </div>
                 <div className="video-table">
-                    <video src={videoSource} id="video" width="80%" height="500px" controls autoplay>
+                    <video src={videoSource} id="video" width="80%" height="500px" controls autoPlay>
                         {/* <source /> */}
                     </video>
                     <table className="table">
@@ -55,7 +55,7 @@ export function Studio({data, aiModelInfo, onChangeModelInfo, onTargetModelInfo,
                             {/* {data.map(({_id, content, alerthour, alertmin, period, mp4Url})=>( */}
                             {data[latestData]?.userDetail?.alarm.map((alarm)=>(
                                 <tr key={alarm._id}>
-                                    <td>{alarm.alerthour} : {alarm.alertmin}</td>
+                                    <td>{alarm.alerthour.padStart(2,'0')} : {alarm.alertmin.padStart(2,'0')}</td>
                                     <td>{alarm.content}</td>
                                     {alarm.mp4Url? 
                                     <td>
@@ -71,7 +71,7 @@ export function Studio({data, aiModelInfo, onChangeModelInfo, onTargetModelInfo,
                                         >
                                             모델생성
                                         </Button> */}
-                            			<AiSelectorModal 
+                                        <AiSelectorModal 
                                         modalAiObject={modalAiObject} 
                                         aiModelInfo={aiModelInfo}
                                         dataAi={dataAi}
