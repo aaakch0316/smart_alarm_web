@@ -18,6 +18,7 @@ $ npm server.js
 ```
 
 ### SKILL
+> MERN STACK
 ![MERN STACK](https://webimages.mongodb.com/_com_assets/cms/mern-stack-b9q1kbudz0.png?auto=format%2Ccompress)
 - Nextjs(ReactJS) / ExpressJS / MongoDB
 
@@ -51,7 +52,7 @@ const userSchema = mongoose.Schema({
 
 ### 역할
 
-| 역할     | 이름   |
+| 이름     | 역할   |
 | -------- | ------ |
-| FULL STACK    | 강창현 |
-| FULL STACK | 이예림 |
+| 이예림   | FULL STACK  |
+| 강창현 | FULL STACK  |
