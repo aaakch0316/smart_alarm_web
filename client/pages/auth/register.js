@@ -1,5 +1,5 @@
 import { Layout, Register } from "@/components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Alert from '@mui/material/Alert';
 import Collapse from '@mui/material/Collapse';
 import CloseIcon from '@mui/icons-material/Close';
@@ -13,8 +13,30 @@ import { userActions } from '../../modules/reducers/user.js';
 export default function RegisterPage() {
     const [open, setOpen] = useState(false)
     const [user, setUser] =useState({
-        email:'', password:'', name: ''
+        email:'', password:'', name: '', feature: [],
     })
+    const [diseases, setDiseases] = useState({
+        고혈압: false,
+        당뇨병: false,
+        고지혈증: false,
+        관절염 : false,
+        치매 : false
+        
+    })
+    
+    useEffect(()=> {
+        const inputList = [];
+        for (let i in diseases){
+            if (diseases[i] === true){
+                inputList.push(i)
+            }
+        }
+        setUser({
+            ...user,
+            ['feature']: inputList
+        })
+    }, [diseases])
+
     const dispatch = useDispatch()
     const onChange = e => {
         e.preventDefault()
@@ -24,13 +46,41 @@ export default function RegisterPage() {
             [name]: value
         })
     }
+    const onCheck = e => {
+        e.preventDefault()
+        const {name, value} = e.target;
+
+        setDiseases({
+            ...diseases,
+            [name] : e.target.checked
+        })
+
+
+        // let updateList = [...diseases];
+        // console.log('1. updatae', updateList)
+        // if (e.target.checked) {
+        //     updateList = [...diseases, name];
+        //     console.log('2. updatae', updateList)
+
+        // } else {
+        //     updateList.splice(diseases.indexOf(name), 1);
+        //     console.log('3. updatae', updateList)
+            
+        // }
+        // console.log("diseases", diseases, updateList)
+        // setDiseases((pre)=> [...pre, name])
+        // console.log("diseases", diseases, updateList)
+    }
+
+
     const onSubmit = e => {
         e.preventDefault()
         if (user.password === user.password2){
             dispatch(userActions.joinRequest({
                 email: user.email,
                 password: user.password,
-                name: user.name
+                name: user.name,
+                feature: user.feature
             }))
         } else {
             setOpen(true)
@@ -57,7 +107,7 @@ export default function RegisterPage() {
             >This is an error alert — check your password!</Alert>
         </Collapse>
         <Layout>
-            <Register onChange={onChange} onSubmit={onSubmit} />
+            <Register onChange={onChange} onCheck={onCheck} onSubmit={onSubmit} />
         </Layout>
         </>
     )

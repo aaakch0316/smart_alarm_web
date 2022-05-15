@@ -5,6 +5,11 @@ import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import FormLabel from '@mui/material/FormLabel';
+import FormGroup from '@mui/material/FormGroup';
+import FormControl from '@mui/material/FormControl';
+import FormHelperText from '@mui/material/FormHelperText';
+
 import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
@@ -15,7 +20,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 const theme = createTheme();
 
-export function Register({onChange, onSubmit}){
+export function Register({onChange, onCheck, onSubmit}){
 
   return (
     <ThemeProvider theme={theme}>
@@ -104,6 +109,44 @@ export function Register({onChange, onSubmit}){
                   id="name"
                   onChange={onChange}
                 />
+              </Grid>
+              <Grid>
+                <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
+                    <FormLabel component="legend">*질병이 있으시다면 선택해주세요</FormLabel>
+                    <FormGroup>
+                        <FormControlLabel
+                            control={
+                            <Checkbox name="고혈압" onChange={onCheck}/>
+                            }
+                            label="고혈압"
+                        />
+                        <FormControlLabel
+                            control={
+                            <Checkbox name="당뇨병" onChange={onCheck}/>
+                            }
+                            label="당뇨병"
+                        />
+                        <FormControlLabel
+                            control={
+                            <Checkbox name="고지혈증" onChange={onCheck}/>
+                            }
+                            label="고지혈증"
+                        />
+                        <FormControlLabel
+                            control={
+                            <Checkbox name="관절염" onChange={onCheck}/>
+                            }
+                            label="관절염"
+                        />
+                        <FormControlLabel
+                            control={
+                            <Checkbox name="치매" onChange={onCheck} />
+                            }
+                            label="치매"
+                        />
+                    </FormGroup>
+                    <FormHelperText>체크한 질병에 따라 AI서비스가 맞춤으로 진행됩니다</FormHelperText>
+                </FormControl>
               </Grid>
               {/* <Grid item xs={12}>
                 <FormControlLabel
