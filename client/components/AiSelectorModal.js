@@ -24,7 +24,10 @@ const style = {
 
 export default function AiSelectorModal({
     modalAiObject, 
-    dataAi
+    dataAi,
+    onChangeModelInfo,
+    onTargetModelInfo,
+    aiModelInfo
     // onSubmitAlarm, 
     // onChangeAlarm
 }) {
@@ -39,7 +42,7 @@ export default function AiSelectorModal({
         > create modal</Button>
       <Modal
         open={modalAiObject.openAiModal}
-        onClose={modalAiObject.handleCloseAiModal}
+        // onClose={modalAiObject.handleCloseAiModal}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -58,49 +61,29 @@ export default function AiSelectorModal({
             {/* <ActionAreaCard /> */}
             <Grid container spacing={2}>
               {dataAi.modelList.map((card) =>
-                <ActionAreaCard card={card} />
+                <ActionAreaCard card={card} onTargetModelInfo={onTargetModelInfo} />
               )}
-            {/* <ActionAreaCard /> */}
-              <Grid item xs={12} sm={6} >
-                <TextField
-                  // autoComplete="given-name"
-                  name="alerthour"
-                  required
-                  fullWidth
-                  id="alerthour"
-                  label="Alarm Hour"
-                  autoFocus
-                //   onChange={onChangeAlarm}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
+
+              <Grid item xs={12} sm={12}>
                 <TextField
                   required
                   fullWidth
-                  id="alertmin"
-                  label="Alarm Min"
-                  name="alertmin"
-                  // autoComplete="family-name"
-                //   onChange={onChangeAlarm}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="content"
-                  label="content"
-                  name="content"
+                  id="text"
+                  label="알림 내용을 적어주세요"
+                  name="text"
                   // autoComplete="email"
-                //   onChange={onChangeAlarm}
+                  onChange={onChangeModelInfo}
                 />
               </Grid>
             </Grid>
+            <div>모델이름 : {aiModelInfo.modelName}</div>
+            <div>알림내용 : {aiModelInfo.text}</div>
             <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              onClick={modalAiObject.handleCloseAiModal}
             >
               SAVE
             </Button>

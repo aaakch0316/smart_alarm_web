@@ -52,3 +52,42 @@ function* modelList(dataAi){
 export function* watchModelList(){
     yield takeLatest(aiActions.modelListRequest, modelList)
 }
+
+// videoRequest
+
+function* video(data){
+    try{
+        console.log('saga진입')
+        console.log(data.payload)
+        const responseToken = yield fetch("/api/aiToken", {
+            method: "GET"
+        });
+        const tokenRes = yield responseToken.json();
+        console.log('token', tokenRes)
+        let token = tokenRes.token
+
+        const videoRes = yield fetch("/api/aiVideo", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                "language": data.payload.language,
+                "text": data.payload.text,
+                "model": data.payload.model,
+                "token": token
+            }),
+        });
+        const videoUrl = yield videoRes.json();
+        console.log(videoUrl)
+        // yield put(aiActions.modelListSuccess(aiList.models))
+
+    }catch(error){
+        console.log(error)
+        yield put(aiActions.videoFailure(error))
+    }
+}
+
+export function* watchvideo(){
+    yield takeLatest(aiActions.videoRequest, video)
+}

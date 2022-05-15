@@ -5,13 +5,22 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
-export default function ActionAreaCard({card}) {
+export default function ActionAreaCard({card, onTargetModelInfo}) {
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea>
+      <CardActionArea
+        onClick={(e)=>onTargetModelInfo(
+          {
+            language: card.language[0],
+            model: card.id,
+            modelName: card.label.ko
+          }
+          , e)}
+      >
         <CardMedia
           component="img"
-          height="140"
+          // height="200"
+          // width="30"
           image={card.imgPath}
           alt={card.label.ko}
         />

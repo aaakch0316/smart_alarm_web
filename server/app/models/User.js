@@ -27,7 +27,7 @@ export default function UserModel(mongoose) {
         },
         name: String,
         age: String,
-        feature: String,
+        feature: [],
         phone: String,
         alarm: [alarmSchema]
     }, {timestamps: true});
