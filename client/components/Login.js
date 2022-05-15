@@ -34,7 +34,7 @@ export function Login({onChange, onSubmit}) {
                             Password&nbsp;<span className="label__required">*</span>
                         </>
                 </label> 
-                <input onChange={onChange} className={cx("input","")} name="password" />
+                <input onChange={onChange} className={cx("input","")} name="password" type="password"/>
                 <button type="submit"  className="btn btn__primary">LOGIN</button>
                 
             </div>

@@ -46,7 +46,7 @@ export default function BasicModal({modalObject, onSubmitAlarm, onChangeAlarm}) 
           </Typography>
           <CssBaseline />
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            시간과 말하고 싶은 문구를 적어주세요 (ex. 엄마 약먹을 시간이야)
+            시간(24시 기준)과 말하고 싶은 문구를 적어주세요 <br/>(ex. 엄마 약먹을 시간이야)
           </Typography>
           <Box component="form" noValidate sx={{ mt: 3 }} 
           onSubmit={onSubmitAlarm}

@@ -44,7 +44,35 @@ export function* watchDelAlarm(){
 
 function* join(user){
     try{
-        const response = yield joinApi(user.payload)
+
+        console.log("user.payload", user)
+        let alarmList = []
+        let data = user.payload
+        user.payload.feature.map(val => {
+            if (val === '고혈압') {
+                alarmList.push({
+                    content:'혈압잴 시간이예요', alerthour:'18', alertmin: '00', email: data.email
+                })
+            } else if (val === '당뇨병') {
+                alarmList.push({
+                    content:'주사 놓을 시간이예요', alerthour:'15', alertmin: '00', email: data.email
+                })
+            } else if (val === '고지혈증') {
+                alarmList.push({
+                    content:'운동할 시간이예요', alerthour:'11', alertmin: '00', email: data.email
+                })
+            } else if (val === '관절염') {
+                alarmList.push({
+                    content:'관절약 먹을 시간이예요', alerthour:'10', alertmin: '00', email: data.email
+                })
+            } else {
+                alarmList.push({
+                    content:'치매약 먹을 시간이예요', alerthour:'08', alertmin: '00', email: data.email
+                })
+            }
+        })
+        data['alarm'] = alarmList
+        const response = yield joinApi(data)
         yield put(userActions.joinSuccess(response))
         yield Router.push('/auth/login');
 

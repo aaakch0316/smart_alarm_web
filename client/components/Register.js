@@ -110,6 +110,18 @@ export function Register({onChange, onCheck, onSubmit}){
                   onChange={onChange}
                 />
               </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  type="number"
+                  name="age"
+                  label="User Age"
+                  // type="password"
+                  id="age"
+                  onChange={onChange}
+                />
+              </Grid>
               <Grid>
                 <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
                     <FormLabel component="legend">*질병이 있으시다면 선택해주세요</FormLabel>
