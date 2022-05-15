@@ -23,7 +23,7 @@ export function Header({data, onSubmitAlarm, onChangeAlarm, modalObject}) {
             </div>
             <div>
                 <p fontWeight="bold">
-                    보유 질병 : {disease.map(val => (<span style={style}>{val}</span>))}
+                    보유 질병 : {disease.length === 0 ? '특이질병없음' : disease?.map(val => (<span style={style}>{val}</span>))}
                 </p>
             </div>
 			{/* <Button
