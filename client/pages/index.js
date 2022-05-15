@@ -62,14 +62,20 @@ export default function Home() {
         
         setOpenAiModal(true);
     }
-    const handleCloseAiModal = (e) => {
+    const handleSimpleClose = () => {
+        setOpenAiModal(false);
+    }
+    const handleCloseAiModal = (alarm, e) => {
         e.preventDefault()
         console.log(aiModelInfo)
-        dispatch(aiActions.videoRequest(aiModelInfo))
-        // setOpenAiModal(false);
+        console.log(alarm)
+        console.log(data[0].userDetail.email)
+        dispatch(userActions.delAlarmRequest({_id:alarm._id, email:data[0].userDetail.email}))
+        dispatch(aiActions.videoRequest({...aiModelInfo, alarm:alarm, email:data[0].userDetail.email}))
+        setOpenAiModal(false);
     }
     const modalAiObject = {
-        openAiModal, handleCloseAiModal, handleOpenAiModal
+        openAiModal, handleCloseAiModal, handleOpenAiModal, handleSimpleClose
     }
     
 

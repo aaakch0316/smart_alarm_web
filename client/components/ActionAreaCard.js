@@ -19,8 +19,8 @@ export default function ActionAreaCard({card, onTargetModelInfo}) {
       >
         <CardMedia
           component="img"
-          // height="200"
-          // width="30"
+          height="20"
+          // width="30px"
           image={card.imgPath}
           alt={card.label.ko}
         />

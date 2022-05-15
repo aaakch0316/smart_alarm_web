@@ -27,7 +27,8 @@ export default function AiSelectorModal({
     dataAi,
     onChangeModelInfo,
     onTargetModelInfo,
-    aiModelInfo
+    aiModelInfo,
+    alarm
     // onSubmitAlarm, 
     // onChangeAlarm
 }) {
@@ -42,7 +43,7 @@ export default function AiSelectorModal({
         > create modal</Button>
       <Modal
         open={modalAiObject.openAiModal}
-        // onClose={modalAiObject.handleCloseAiModal}
+        onClose={modalAiObject.handleSimpleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -79,17 +80,17 @@ export default function AiSelectorModal({
             <div>모델이름 : {aiModelInfo.modelName}</div>
             <div>알림내용 : {aiModelInfo.text}</div>
             <Button
-              type="submit"
+              // type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              onClick={modalAiObject.handleCloseAiModal}
+              onClick={(e)=>modalAiObject.handleCloseAiModal(alarm, e)}
             >
               SAVE
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Button variant="body2" onClick={modalAiObject.handleCloseAiModal}>
+                <Button variant="body2" onClick={modalAiObject.handleSimpleClose}>
                   CANCEL
                 </Button>
               </Grid>

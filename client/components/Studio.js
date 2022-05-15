@@ -77,6 +77,7 @@ export function Studio({data, aiModelInfo, onChangeModelInfo, onTargetModelInfo,
                                         dataAi={dataAi}
                                         onChangeModelInfo={onChangeModelInfo}
                                         onTargetModelInfo={onTargetModelInfo}
+                                        alarm={alarm}
                                         // onSubmitAlarm={onSubmitAlarm} 
                                         // onChangeAlarm={onChangeAlarm} 
                                         />

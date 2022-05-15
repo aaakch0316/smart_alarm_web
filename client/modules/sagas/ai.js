@@ -1,8 +1,10 @@
 import { put, call, takeLatest } from "redux-saga/effects"
 import Router from 'next/router';
 import { aiActions } from "../reducers/ai"
+import { userActions } from "../reducers/user"
 import { modelListApi } from "../../pages/api/ai"
 import { useSelector, useDispatch } from 'react-redux'
+import { joinApi, loginApi, logoutApi, alarmApi, delAlarmApi } from "../../pages/api/user"
 
 
 function* modelList(dataAi){
@@ -57,8 +59,6 @@ export function* watchModelList(){
 
 function* video(data){
     try{
-        console.log('saga진입')
-        console.log(data.payload)
         const responseToken = yield fetch("/api/aiToken", {
             method: "GET"
         });
@@ -80,7 +80,28 @@ function* video(data){
         });
         const videoUrl = yield videoRes.json();
         console.log(videoUrl)
-        // yield put(aiActions.modelListSuccess(aiList.models))
+        console.log(videoUrl['mp4Url'])
+        console.log(data.payload.alarm)
+        console.log(data.payload.email)
+        const targetAlarm = data.payload.alarm
+        console.log(targetAlarm)
+        const newAlarm = {}
+        for (let i in targetAlarm){
+            if (i !== "_id"){
+                console.log(i)
+                newAlarm[i] = targetAlarm[i]
+            }
+        }
+        console.log(newAlarm)
+
+        const addResponse = yield alarmApi({email:data.payload.email, ...newAlarm, mp4Url:videoUrl['mp4Url']})
+        yield put(userActions.alarmSuccess(addResponse))
+
+
+        // const delResponse = yield delAlarmApi({_id:targetAlarm._id, email:data.payload.email})
+        // yield put(userActions.delAlarmSuccess(delResponse))
+
+        // yield put(aiActions.videoSuccess(aiList.models)) 
 
     }catch(error){
         console.log(error)
