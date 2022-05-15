@@ -9,7 +9,6 @@ import { joinApi, loginApi, logoutApi, alarmApi, delAlarmApi } from "../../pages
 
 function* modelList(dataAi){
     try{
-        console.log('modelList saga 들어옴') 
         let token = dataAi.payload.token
         // if (token.length ===0) {
         //     console.log('업')
@@ -31,7 +30,6 @@ function* modelList(dataAi){
         });
         const tokeRes = yield responseToken.json();
         token = tokeRes.token
-        console.log(11)
         const responseAiList = yield fetch("/api/aiList", {
             method: "POST",
             headers: {
@@ -42,11 +40,9 @@ function* modelList(dataAi){
             }),
         });
         const aiList = yield responseAiList.json();
-        console.log(aiList.models)
         yield put(aiActions.modelListSuccess(aiList.models))
 
     }catch(error){
-        console.log(error)
         yield put(aiActions.modelListFailure(error))
     }
 }
@@ -63,7 +59,6 @@ function* video(data){
             method: "GET"
         });
         const tokenRes = yield responseToken.json();
-        console.log('token', tokenRes)
         let token = tokenRes.token
 
         const videoRes = yield fetch("/api/aiVideo", {
@@ -79,20 +74,13 @@ function* video(data){
             }),
         });
         const videoUrl = yield videoRes.json();
-        console.log(videoUrl)
-        console.log(videoUrl['mp4Url'])
-        console.log(data.payload.alarm)
-        console.log(data.payload.email)
         const targetAlarm = data.payload.alarm
-        console.log(targetAlarm)
         const newAlarm = {}
         for (let i in targetAlarm){
             if (i !== "_id"){
-                console.log(i)
                 newAlarm[i] = targetAlarm[i]
             }
         }
-        console.log(newAlarm)
 
         const addResponse = yield alarmApi({email:data.payload.email, ...newAlarm, mp4Url:videoUrl['mp4Url']})
         yield put(userActions.alarmSuccess(addResponse))
@@ -104,7 +92,6 @@ function* video(data){
         // yield put(aiActions.videoSuccess(aiList.models)) 
 
     }catch(error){
-        console.log(error)
         yield put(aiActions.videoFailure(error))
     }
 }

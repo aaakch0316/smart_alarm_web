@@ -78,8 +78,8 @@ export default function AiSelectorModal({
                 />
               </Grid>
             </Grid>
-            <div>모델이름 : {aiModelInfo.modelName}</div>
-            <div>알림내용 : {aiModelInfo.text}</div>
+            {/* <div>모델이름 : {aiModelInfo.modelName}</div>
+            <div>알림내용 : {aiModelInfo.text}</div> */}
             <Button
               // type="submit"
               fullWidth

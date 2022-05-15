@@ -9,14 +9,12 @@ const headers = {
 
 export default async (req, res) => {
 	const { method } = req;
-    console.log('???')
 
 	switch (method) {
 		case "GET":
 			try {
 
 			} catch (error) {
-				console.log(error)
 				return res.status(400).json({
 					success: false,
 					error: error
@@ -24,9 +22,6 @@ export default async (req, res) => {
 			}
 		case "POST":
 			try {
-                // console.log(req.body)
-                // console.log(req.body.token)
-                console.log('modelLIstApi')
                 const response = await axios.post(`${SERVER}/getModelList`, 
                 {
                     appId:"aistudios.com",

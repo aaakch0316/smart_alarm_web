@@ -8,14 +8,12 @@ const headers = {
 
 export default async (req, res) => {
 	const { method } = req;
-    console.log('???')
 
 	switch (method) {
 		case "GET":
 			try {
 
 			} catch (error) {
-				console.log(error)
 				return res.status(400).json({
 					success: false,
 					error: error
@@ -43,7 +41,6 @@ export default async (req, res) => {
 				)
 
 				const videoKey = keyResponse.data.data.key
-				console.log(videoKey)
 				
 				
 				let videoUrl = 'https://user-images.githubusercontent.com/60080224/168462583-71a048fa-4447-422e-bf57-763b0766db0f.mp4'

@@ -7,12 +7,9 @@ import { joinApi, loginApi, logoutApi, alarmApi, delAlarmApi } from "../../pages
 
 function* alarm(data){
     try{
-        console.log('saga 들어옴') 
-        console.log(data) 
 
         const response = yield alarmApi(data.payload)
         yield put(userActions.alarmSuccess(response))
-        console.log(response)
         Router.push('/');
 
     }catch(error){
@@ -26,8 +23,6 @@ export function* watchalarm(){
 
 function* delAlarm(data){
     try{
-        console.log('saga 들어옴') 
-        console.log(data) 
 
         const response = yield delAlarmApi(data.payload)
         yield put(userActions.delAlarmSuccess(response))
@@ -45,7 +40,6 @@ export function* watchDelAlarm(){
 function* join(user){
     try{
 
-        console.log("user.payload", user)
         let alarmList = []
         let data = user.payload
         user.payload.feature.map(val => {
@@ -89,8 +83,6 @@ function* login(login){
     try{
         
         const response = yield loginApi(login.payload)
-        console.log('response')
-        console.log(response.accessToken)
         yield call(setToken, response.accessToken)
         yield put(userActions.loginSuccess(response))
         yield Router.push('/');

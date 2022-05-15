@@ -38,7 +38,6 @@ export default function Home() {
         })
     }
     const onTargetModelInfo = (targetObject) =>{
-        console.log(targetObject)
         if (targetObject.language !== 'ko'){
             alert("지원하지 않는 언어 입니다. 다시 모델을 선택해 주세요")
         }
@@ -67,9 +66,6 @@ export default function Home() {
     }
     const handleCloseAiModal = (alarm, e) => {
         e.preventDefault()
-        console.log(aiModelInfo)
-        console.log(alarm)
-        console.log(data[0].userDetail.email)
         dispatch(userActions.delAlarmRequest({_id:alarm._id, email:data[0].userDetail.email}))
         dispatch(aiActions.videoRequest({...aiModelInfo, alarm:alarm, email:data[0].userDetail.email}))
         setOpenAiModal(false);

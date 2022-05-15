@@ -21,9 +21,7 @@ export function Studio({data, aiModelInfo, onChangeModelInfo, onTargetModelInfo,
     // }, [])
     const latestData = data.length -1
     useEffect(() => {
-        console.log(document.querySelector('#video'))
         document.querySelector('#video').autoplay = true;
-        console.log("url변화", data[0]?.userDetail.alarm)
     }, [videoSource])
 
 
