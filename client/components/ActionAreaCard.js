@@ -12,13 +12,15 @@ export default function ActionAreaCard({card, onTargetModelInfo}) {
         onClick={(e)=>onTargetModelInfo(
           {
             language: card.language[0],
-            model: card.id
+            model: card.id,
+            modelName: card.label.ko
           }
           , e)}
       >
         <CardMedia
           component="img"
-          height="140"
+          // height="200"
+          // width="30"
           image={card.imgPath}
           alt={card.label.ko}
         />

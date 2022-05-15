@@ -27,7 +27,7 @@ export default function Home() {
     const dataAi = useSelector((state) => state.ais)
 
     const [ aiModelInfo, setAiModelInfo ] = useState({
-        language: '', text: '', model: ''
+        language: '', text: '', model: '', modelName:''
     })
 
     const onChangeModelInfo = e => { 
@@ -39,13 +39,14 @@ export default function Home() {
     }
     const onTargetModelInfo = (targetObject) =>{
         console.log(targetObject)
-        if (targetObject.language === 'ko'){
-            alert("지원하지 않는 언어 입니다. 다시 선택해 주세요")
+        if (targetObject.language !== 'ko'){
+            alert("지원하지 않는 언어 입니다. 다시 모델을 선택해 주세요")
         }
         setAiModelInfo({
             ...aiModelInfo,
             ['language']: targetObject.language,
-            ['model']: targetObject.model
+            ['model']: targetObject.model,
+            ['modelName']: targetObject.modelName
         })
     }
 
@@ -58,13 +59,14 @@ export default function Home() {
     const [openAiModal, setOpenAiModal] = useState(false);
     const handleOpenAiModal = () => {
         dispatch(aiActions.modelListRequest(dataAi))
-
+        
         setOpenAiModal(true);
     }
     const handleCloseAiModal = (e) => {
-        // e.preventDefault()
+        e.preventDefault()
         console.log(aiModelInfo)
-        setOpenAiModal(false);
+        dispatch(aiActions.videoRequest(aiModelInfo))
+        // setOpenAiModal(false);
     }
     const modalAiObject = {
         openAiModal, handleCloseAiModal, handleOpenAiModal
@@ -119,7 +121,7 @@ export default function Home() {
                 <title>DEEPBRAIN</title>
             </Head>
             <Header data={data[0]} modalObject={modalObject} onSubmitAlarm={onSubmitAlarm} onChangeAlarm={onChangeAlarm} />
-            <Studio data={data} onChangeModelInfo={onChangeModelInfo} onTargetModelInfo={onTargetModelInfo} videoSource={videoSource} setVideoSource={setVideoSource} onDelAlarm={onDelAlarm} modalAiObject={modalAiObject} dataAi={dataAi} />
+            <Studio data={data} aiModelInfo={aiModelInfo} onChangeModelInfo={onChangeModelInfo} onTargetModelInfo={onTargetModelInfo} videoSource={videoSource} setVideoSource={setVideoSource} onDelAlarm={onDelAlarm} modalAiObject={modalAiObject} dataAi={dataAi} />
         </Layout>
     )
 }
