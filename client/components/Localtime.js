@@ -14,7 +14,6 @@ const LocalTime = ({data, setVideoSource}) => {
                 // 비동기 처리
                 setHour(String(new Date().getHours()));
                 setMinute(String(new Date().getMinutes()));
-                console.log("실행되는지 확인", new Date().getMinutes())
                 // 아래 함수가 위에 함수보다 먼저 실행됨
                 alarmList.forEach((val, idx) => {
                     // console.log(val.alerthour, val.alertmin, new Date().getHours(), new Date().getMinutes(),Number(val.alerthour) === Number(hour) && Number(val.alertmin) === Number(minute))

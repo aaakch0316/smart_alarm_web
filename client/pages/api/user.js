@@ -49,7 +49,6 @@ export const loginApi = async (payload) => {
         // console.log(loginUser.token)
         return response.data
     }catch(error){
-        console.log(error)
         return error
     }
 }

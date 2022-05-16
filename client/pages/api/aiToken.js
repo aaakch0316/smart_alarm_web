@@ -9,7 +9,6 @@ export default async (req, res) => {
                     method: "GET"
                 });
 				const clientData = await clientResponse.json()
-				// console.log(clientData.token)
 				const tokenResponse = await fetch("https://dev.aistudios.com/api/odin/generateToken",{
 					method: "POST",
 					headers: {
@@ -33,7 +32,6 @@ export default async (req, res) => {
 				// 	data: authToken,
 				// });
 			} catch (error) {
-				console.log(error)
 				return res.status(400).json({
 					success: false,
 					error: error

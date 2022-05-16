@@ -8,12 +8,10 @@ const headers = {
 
 export const modelListApi = async () => {
     try{
-        console.log('api 접속')
         const clientResponse = await fetch("https://dev.aistudios.com/api/odin/generateClientToken?appId=aistudios.com&userKey=6443234b-77d5-4013-bfd6-bb9399f317d9", {
             method: "GET"
         });
         const clientData = await clientResponse.json()
-        console.log(clientData.token)
         const tokenResponse = await fetch("https://dev.aistudios.com/api/odin/generateToken",{
             method: "POST",
             headers: {
@@ -30,7 +28,6 @@ export const modelListApi = async () => {
             }),
         })
         const authToken = await tokenResponse.json()
-        console.log(authToken)
 
         return authToken
         // console.log('modelLIstApi')
