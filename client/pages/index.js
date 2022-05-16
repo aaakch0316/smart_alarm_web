@@ -8,23 +8,28 @@ import useToken from "@/hooks/useToken";
 import LinearIndeterminate from "@/components/LinearProgress ";
 import { userActions } from '@/modules/reducers/user.js';
 import { aiActions } from '@/modules/reducers/ai.js';
+import TokenService from "@/services/tokenService";
 
 
 // import "@/styles/main.scss";
 
 export default function Home() {
-    const token = useToken();
+    const data = useSelector((state) => state.users.data)
+    const dataAi = useSelector((state) => state.ais)
+    
+    let token = useToken();
+    let localToken = TokenService.get()
     useEffect(()=>{
+        // if (typeof token !== 'string' && typeof localToken !== 'string') {
         if (typeof token !== 'string') {
             Router.push('/auth/login');
         }
     }, [token])
-    if (typeof token !== 'string') {
+    // if (typeof token !== 'string' && typeof localToken !== 'string') {
+    if (typeof token !== 'string' ) {
         return <LinearIndeterminate />
     }
 
-    const data = useSelector((state) => state.users.data)
-    const dataAi = useSelector((state) => state.ais)
 
     const [ aiModelInfo, setAiModelInfo ] = useState({
         language: '', text: '', model: '', modelName:''

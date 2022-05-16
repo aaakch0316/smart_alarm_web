@@ -8,7 +8,7 @@
 ```
 // client
 $ cd client
-$ yarn install
+$ npm install
 $ yarn dev
 
 //server

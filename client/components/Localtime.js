@@ -9,13 +9,13 @@ const LocalTime = ({data, setVideoSource}) => {
         const id = setInterval(() => {
             setTime(new Date());
             const sec = new Date().getSeconds();
-            const alarmList = data[0].userDetail.alarm
+            const alarmList = data[0]?.userDetail.alarm
             if (sec === 1) {
                 // 비동기 처리
                 setHour(String(new Date().getHours()));
                 setMinute(String(new Date().getMinutes()));
                 // 아래 함수가 위에 함수보다 먼저 실행됨
-                alarmList.forEach((val, idx) => {
+                alarmList?.forEach((val, idx) => {
                     // console.log(val.alerthour, val.alertmin, new Date().getHours(), new Date().getMinutes(),Number(val.alerthour) === Number(hour) && Number(val.alertmin) === Number(minute))
                     if (Number(val.alerthour) === Number(new Date().getHours()) && Number(val.alertmin) === Number(new Date().getMinutes())) {
                         // 동영상 url넘겨주면 바꿔줌
