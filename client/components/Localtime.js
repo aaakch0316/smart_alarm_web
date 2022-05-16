@@ -20,9 +20,10 @@ const LocalTime = ({data, setVideoSource}) => {
                     // console.log(val.alerthour, val.alertmin, new Date().getHours(), new Date().getMinutes(),Number(val.alerthour) === Number(hour) && Number(val.alertmin) === Number(minute))
                     if (Number(val.alerthour) === Number(new Date().getHours()) && Number(val.alertmin) === Number(new Date().getMinutes())) {
                         // 동영상 url넘겨주면 바꿔줌
+                        console.log("시간이 똑같은지 확인합니다")
                         setVideoSource(val.mp4Url)
+                        console.log("동영상이 넘어가나요?")
                         // setVideoSource('./sample-mp4-file-small.mp4')
-                        console.log("hi")
                     }
                 })
                 
