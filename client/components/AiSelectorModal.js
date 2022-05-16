@@ -8,6 +8,8 @@ import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
 import ActionAreaCard from './ActionAreaCard';
+import Skeleton from '@mui/material/Skeleton';
+
 
 
 const style = {
@@ -32,7 +34,6 @@ export default function AiSelectorModal({
     // onSubmitAlarm, 
     // onChangeAlarm
 }) {
-
   return (
     <div>
         <Button 
@@ -57,13 +58,29 @@ export default function AiSelectorModal({
             원하시는 가족을 선택해주세요
             {/* {JSON.stringify(dataAi.modelList[0])} */}
           </Typography>
-          <Box component="form" noValidate sx={{ mt: 3 }} 
+          <Box 
+            component="form" 
+            noValidate 
+            sx={{ mt: 3 }} 
+            display="flex" 
+            flexDirection="column"
+            justifyContent="center"
+            alignItems="center"
         //   onSubmit={onSubmitAlarm}
           >
             {/* <ActionAreaCard /> */}
-            <Grid container spacing={2}>
-              {dataAi.modelList.map((card) =>
-                <ActionAreaCard card={card} onTargetModelInfo={onTargetModelInfo} />
+
+            <Grid container spacing={1}>
+              {dataAi?.modelList.length? dataAi.modelList.map((card) =>
+                <ActionAreaCard width={210} height={118} card={card} onTargetModelInfo={onTargetModelInfo} />
+              ): (
+                <>
+                  <Box sx={{ pt: 0.5 }}>
+                  <Skeleton variant="rectangular" width={210} height={118} />
+                    <Skeleton />
+                    <Skeleton width="60%" />
+                  </Box>
+                </>                
               )}
 
               <Grid item xs={12} sm={12}>

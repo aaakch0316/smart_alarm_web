@@ -14,11 +14,9 @@ import TokenService from "@/services/tokenService";
 // import "@/styles/main.scss";
 
 export default function Home() {
-    const data = useSelector((state) => state.users.data)
-    const dataAi = useSelector((state) => state.ais)
-    
     let token = useToken();
     let localToken = TokenService.get()
+    
     useEffect(()=>{
         // if (typeof token !== 'string' && typeof localToken !== 'string') {
         if (typeof token !== 'string') {
@@ -30,6 +28,9 @@ export default function Home() {
         return <LinearIndeterminate />
     }
 
+    const data = useSelector((state) => state.users.data)
+    const dataAi = useSelector((state) => state.ais)
+    
 
     const [ aiModelInfo, setAiModelInfo ] = useState({
         language: '', text: '', model: '', modelName:''
