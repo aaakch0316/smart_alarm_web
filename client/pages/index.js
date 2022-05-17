@@ -93,7 +93,7 @@ export default function Home() {
     })
     const [alarmList, setAlarmList] = useState([])
     const inputData = {email: data[0]?.userDetail.email}
-    const [videoSource, setVideoSource] = useState("https://ai-platform-public.s3.ap-northeast-2.amazonaws.com/ysy_2_a8d4cf2dbe8a094cc62a0a1e6a80cfc8.mp4")
+    const [videoSource, setVideoSource] = useState("https://ai-platform-public.s3.ap-northeast-2.amazonaws.com/ysy_1_3bce1777b53cdc214cc89cd3ef3e15cc.mp4")
     const onSubmitAlarm = (e) => {
         e.preventDefault()
         dispatch(userActions.alarmRequest(alarm))
