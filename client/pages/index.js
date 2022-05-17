@@ -4,7 +4,7 @@ import Router from 'next/router';
 import { useSelector, useDispatch } from 'react-redux'
 
 import { Header, Layout, Modal, Studio } from "@/components";
-import useToken from "@/hooks/useToken";
+import useToken from "@/components/hooks/useToken";
 import LinearIndeterminate from "@/components/LinearProgress ";
 import { userActions } from '@/modules/reducers/user.js';
 import { aiActions } from '@/modules/reducers/ai.js';
@@ -30,6 +30,7 @@ export default function Home() {
 
     const data = useSelector((state) => state.users.data)
     const dataAi = useSelector((state) => state.ais)
+    const loading = useSelector((state)=> state.ais.loading)
     
 
     const [ aiModelInfo, setAiModelInfo ] = useState({
@@ -75,13 +76,13 @@ export default function Home() {
         dispatch(userActions.delAlarmRequest({_id:alarm._id, email:data[0].userDetail.email}))
         dispatch(aiActions.videoRequest({...aiModelInfo, alarm:alarm, email:data[0].userDetail.email}))
         setOpenAiModal(false);
+        setModelLoading(true)
     }
     const modalAiObject = {
         openAiModal, handleCloseAiModal, handleOpenAiModal, handleSimpleClose
     }
+    const [modelLoading, setModelLoading] = useState(false)
     
-
-
 
     const dispatch = useDispatch()
 
@@ -116,14 +117,16 @@ export default function Home() {
         
     }
 
-
     return (
+        <>
         <Layout>
             <Head>
                 <title>DEEPBRAIN</title>
             </Head>
             <Header data={data[0]} modalObject={modalObject} onSubmitAlarm={onSubmitAlarm} onChangeAlarm={onChangeAlarm} />
+            {loading ? <LinearIndeterminate /> : null}
             <Studio data={data} aiModelInfo={aiModelInfo} onChangeModelInfo={onChangeModelInfo} onTargetModelInfo={onTargetModelInfo} videoSource={videoSource} setVideoSource={setVideoSource} onDelAlarm={onDelAlarm} modalAiObject={modalAiObject} dataAi={dataAi} />
         </Layout>
+        </>
     )
 }

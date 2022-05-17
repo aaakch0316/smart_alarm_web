@@ -29,8 +29,9 @@ const aiSlice = createSlice({
             state.loading = true;
         },
         videoSuccess: (state, payload) => {
-            state.loading = payload.loading;
-            state.url = payload.url
+            // state.loading = payload.loading;
+            // state.url = payload.url
+            state.loading = false;
         },
         videoFailure: (state, payload) => {
             state.loading = false;

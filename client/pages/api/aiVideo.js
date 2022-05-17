@@ -1,6 +1,7 @@
 import axios from 'axios';
+// import dotenv from 'dotenv';
 
-const SERVER = 'https://dev.aistudios.com/api/odin'
+const SERVER = process.env.AI_STUDIOS_PROXY;
 const headers = {
     "content-Type": "application/json",
     // Authorization: "JWT fetching..."
@@ -48,7 +49,7 @@ export default async (req, res) => {
 				let flag ="waiting"
 				while (true){
 					if (flag ==="waiting" || flag !== 100){
-						const videoResponse = await fetch("https://dev.aistudios.com/api/odin/findProject",{
+						const videoResponse = await fetch(`${SERVER}/findProject`,{
 							method: "POST",
 							headers: {
 								"Content-Type": "application/json",
@@ -68,7 +69,7 @@ export default async (req, res) => {
 						flag = videoUrl.data.progress
 						console.log(flag)
 					}else{
-						const videoResponse = await fetch("https://dev.aistudios.com/api/odin/findProject",{
+						const videoResponse = await fetch(`${SERVER}/findProject`,{
 							method: "POST",
 							headers: {
 								"Content-Type": "application/json",

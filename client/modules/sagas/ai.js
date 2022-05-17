@@ -84,12 +84,7 @@ function* video(data){
 
         const addResponse = yield alarmApi({email:data.payload.email, ...newAlarm, mp4Url:videoUrl['mp4Url']})
         yield put(userActions.alarmSuccess(addResponse))
-
-
-        // const delResponse = yield delAlarmApi({_id:targetAlarm._id, email:data.payload.email})
-        // yield put(userActions.delAlarmSuccess(delResponse))
-
-        // yield put(aiActions.videoSuccess(aiList.models)) 
+        yield put(aiActions.videoSuccess())
 
     }catch(error){
         yield put(aiActions.videoFailure(error))

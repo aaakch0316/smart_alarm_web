@@ -1,6 +1,7 @@
+// import dotenv from 'dotenv';
 import axios from 'axios';
 
-const SERVER = 'https://dev.aistudios.com/api/odin'
+const SERVER = process.env.AI_STUDIOS_PROXY
 const headers = {
     "content-Type": "application/json",
     // Authorization: "JWT fetching..."
@@ -24,13 +25,13 @@ export default async (req, res) => {
 			try {
                 const response = await axios.post(`${SERVER}/getModelList`, 
                 {
-                    appId:"aistudios.com",
-                    platform:"web",
+                    appId:process.env.AI_STUDIOS_APPID,
+                    platform:process.env.AI_STUDIOS_PLATFORM,
                     isClientToken:true,
                     token: req.body.token,
-                    uuid:"6443234b-77d5-4013-bfd6-bb9399f317d9",
-                    sdk_v:"1.0",
-                    clientHostname:"aistudios.com"
+                    uuid:process.env.AI_STUDIOS_UUID,
+                    sdk_v:process.env.AI_STUDIOS_SDK_V,
+                    clientHostname:process.env.AI_STUDIOS_CLIENTHOSTNAME
                 }, 
                 {headers})
 

@@ -1,27 +1,30 @@
+// import dotenv from 'dotenv';
 
 export default async (req, res) => {
 	const { method } = req;
+	const SERVER = process.env.AI_STUDIOS_PROXY;
+
 
 	switch (method) {
 		case "GET":
 			try {
-				const clientResponse = await fetch("https://dev.aistudios.com/api/odin/generateClientToken?appId=aistudios.com&userKey=6443234b-77d5-4013-bfd6-bb9399f317d9", {
+				const clientResponse = await fetch(`${SERVER}/generateClientToken?appId=${process.env.AI_STUDIOS_APPID}&userKey=${process.env.AI_STUDIOS_UUID}`, {
                     method: "GET"
                 });
 				const clientData = await clientResponse.json()
-				const tokenResponse = await fetch("https://dev.aistudios.com/api/odin/generateToken",{
+				const tokenResponse = await fetch(`${SERVER}/generateToken`,{
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
 					},
 					body: JSON.stringify({
-						"appId":"aistudios.com",
-						"platform":"web",
+						"appId": process.env.AI_STUDIOS_APPID,
+						"platform":process.env.AI_STUDIOS_PLATFORM,
 						"isClientToken":true,
 						"token": clientData.token,
-						"uuid":"6443234b-77d5-4013-bfd6-bb9399f317d9",
-						"sdk_v":"1.0",
-						"clientHostname":"aistudios.com"
+						"uuid":process.env.AI_STUDIOS_UUID,
+						"sdk_v":process.env.AI_STUDIOS_SDK_V,
+						"clientHostname":process.env.AI_STUDIOS_CLIENTHOSTNAME
 					}),
 				})
 				const authToken = await tokenResponse.json()

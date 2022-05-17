@@ -1,5 +1,6 @@
 import axios from 'axios';
-
+// 'http://127.0.0.1:5000'
+// const SERVER = process.env.SERVER_PROXY
 const SERVER = 'http://127.0.0.1:5000'
 const headers = {
     "content-Type": "application/json",
