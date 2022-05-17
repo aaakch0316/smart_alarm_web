@@ -43,29 +43,6 @@ export function Register({onChange, onCheck, onSubmit}){
 
           <Box component="form" noValidate sx={{ mt: 3 }} onSubmit={onSubmit}>
             <Grid container spacing={2}>
-              {/* <Grid item xs={12} sm={6} >
-                <TextField
-                  autoComplete="given-name"
-                  name="userid"
-                  required
-                  fullWidth
-                  id="userid"
-                  label="사용자ID"
-                  autoFocus
-                  onChange={onChange}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="name"
-                  label="이 름"
-                  name="name"
-                  autoComplete="family-name"
-                  onChange={onChange}
-                />
-              </Grid> */}
               <Grid item xs={12}>
                 <TextField
                   required
@@ -105,7 +82,6 @@ export function Register({onChange, onCheck, onSubmit}){
                   fullWidth
                   name="name"
                   label="User Name"
-                  // type="password"
                   id="name"
                   onChange={onChange}
                 />
@@ -117,7 +93,6 @@ export function Register({onChange, onCheck, onSubmit}){
                   type="number"
                   name="age"
                   label="User Age"
-                  // type="password"
                   id="age"
                   onChange={onChange}
                 />
@@ -160,12 +135,6 @@ export function Register({onChange, onCheck, onSubmit}){
                     <FormHelperText>체크한 질병에 따라 AI서비스가 맞춤으로 진행됩니다</FormHelperText>
                 </FormControl>
               </Grid>
-              {/* <Grid item xs={12}>
-                <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
-                />
-              </Grid> */}
             </Grid>
             <Button
               type="submit"

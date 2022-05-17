@@ -3,10 +3,6 @@ import Button from '@mui/material/Button';
 import Router from 'next/router';
 
 
-// import {
-// 	signin
-// } from "../modules";
-
 export function Login({onChange, onSubmit}) {
     return (
         <form 
@@ -39,10 +35,8 @@ export function Login({onChange, onSubmit}) {
                 
             </div>
             <Button
-				// variant="contained"
 				size="large"
 				className="btn"
-				// styles={{fontSize: 10}}
 				onClick={() => {
                     Router.push("/auth/register")
 				}}

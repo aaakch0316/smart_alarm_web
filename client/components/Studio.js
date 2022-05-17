@@ -5,20 +5,6 @@ import AiSelectorModal from './AiSelectorModal';
 
 export function Studio({data, aiModelInfo, onChangeModelInfo, onTargetModelInfo, videoSource, setVideoSource, onDelAlarm, modalAiObject, dataAi}) {
 
-    // const [min, setMin] = useState('')
-    // const [seconds, setSeconds] = useState('')
-
-    // useEffect(() => { 
-    //     // 현재시각
-    //     const setDate = () => {
-    //         const now = new Date();
-    //         setHours(String(now.getHours()).padStart(2,'0'));
-    //         setMin(String(now.getMinutes()).padStart(2,'0'));
-    //         setSeconds(String(now.getSeconds()).padStart(2,'0'));
-    //     };
-        
-    //     setInterval(setDate, 1000);
-    // }, [])
     const latestData = data.length -1
     useEffect(() => {
         document.querySelector('#video').autoplay = true;
@@ -31,10 +17,6 @@ export function Studio({data, aiModelInfo, onChangeModelInfo, onTargetModelInfo,
             <div className="video">
                 <div className="time">
                     <LocalTime data={data} setVideoSource={setVideoSource}/>
-                    {/* <span className="hand">현재시각  </span>
-                    <span className="hand hour-hand">{hours}:</span>
-                    <span className="hand min-hand">{min}:</span>
-                    <span className="hand sec-hand">{seconds}</span> */}
                 </div>
                 <div className="video-table">
                     <video src={videoSource} id="video" width="80%" height="500px" controls autoPlay>
@@ -50,14 +32,12 @@ export function Studio({data, aiModelInfo, onChangeModelInfo, onTargetModelInfo,
                         </thead>
 
                         <tbody className="table__body">
-                            {/* {data.map(({_id, content, alerthour, alertmin, period, mp4Url})=>( */}
                             {data[latestData]?.userDetail?.alarm.map((alarm)=>(
                                 <tr key={alarm._id}>
                                     <td>{alarm.alerthour.padStart(2,'0')} : {alarm.alertmin.padStart(2,'0')}</td>
                                     <td>{alarm.content}</td>
                                     {alarm.mp4Url? 
                                     <td>
-                                        {/* <Button variant="contained">수정</Button> */}
                                         <Button variant="contained" onClick={(e)=>onDelAlarm(alarm, e)} >삭제</Button>
                                     </td>
                                     : 
