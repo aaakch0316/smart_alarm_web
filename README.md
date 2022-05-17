@@ -1,5 +1,5 @@
 # 독거노인을 위한 감성대화 및 알림 서비스
-> 독거노인들을 위한 알림 서비스를 제공합니다. 맞춤형 알림추가와 자체 알림추가 기능을 제공합니다. 영상에 나올 가족을 선택한 후에 영상의 대화내용을 text로 설정하면, 지정한 시간에 선택한 가족이 설정한 대화내용을 알려줍니다.(Deepbrain AI의 API를 제공받아 진행하였습니다.)
+> 독거노인들을 위한 알림 서비스입니다. 맞춤형 알림추가와 사용자 알림추가 기능을 제공합니다. 영상에 나올 가족을 선택한 후에 영상의 대화내용을 text로 설정하면, 지정한 시간에 선택한 가족이 설정한 대화내용을 알려줍니다.(Deepbrain AI의 API를 제공받아 진행하였습니다.)
 
 
 ### :hourglass_flowing_sand: Get Started
@@ -18,6 +18,8 @@ $ npm server.js
 ```
 
 ### SKILL
+> MERN STACK
+
 ![MERN STACK](https://webimages.mongodb.com/_com_assets/cms/mern-stack-b9q1kbudz0.png?auto=format%2Ccompress)
 - Nextjs(ReactJS) / ExpressJS / MongoDB
 
@@ -51,7 +53,7 @@ const userSchema = mongoose.Schema({
 
 ### 역할
 
-| 역할     | 이름   |
+| 이름     | 역할   |
 | -------- | ------ |
-| FULL STACK    | 강창현 |
-| FULL STACK | 이예림 |
+| 이예림   | FULL STACK  |
+| 강창현 | FULL STACK  |
