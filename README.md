@@ -11,6 +11,10 @@ $ cd client
 $ npm install
 $ yarn dev
 
+// client deploy
+$ npm run build
+$ npm run start
+
 //server
 $ cd server
 $ npm install
